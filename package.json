@@ -12,6 +12,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +35,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BluejayTay/word_app_react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BluejayTay/word_app_react/issues"
+  },
+  "homepage": "https://github.com/BluejayTay/word_app_react#readme"
 }
