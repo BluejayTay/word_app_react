@@ -13,6 +13,7 @@
   },
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -47,5 +48,9 @@
   "bugs": {
     "url": "https://github.com/BluejayTay/word_app_react/issues"
   },
-  "homepage": "https://github.com/BluejayTay/word_app_react#readme"
+  "homepage": "https://github.com/BluejayTay/word_app_react#readme",
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0"
+  }
 }
