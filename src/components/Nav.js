@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <nav className="navbar">
-      <Link className="navbar-brand ms-3 ms-lg-5" to="/">
-        WerdNerd
-      </Link>
+    <nav>
+      <Link to="/">WerdNerd</Link>
     </nav>
   );
 };
