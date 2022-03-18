@@ -4,8 +4,6 @@ import axios from "axios";
 const Game = (props) => {
   const studyListId = props.match.params.study_list_id;
   const [title, setTitle] = useState("");
-  const [words, setWords] = useState();
-  //const [game, setGame] = useState();
   const [gameLoaded, setGameLoaded] = useState(false);
 
   useEffect(() => {
@@ -21,11 +19,11 @@ const Game = (props) => {
       });
     setGameLoaded(true);
   }
-  console.log(words);
+
   return (
     <div>
       Hello Game! {studyListId}, {title}
-      <button>get game</button>
+      <button>Start game</button>
     </div>
   );
 };
