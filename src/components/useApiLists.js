@@ -16,6 +16,7 @@ export default function useApiLists() {
       setStatus("loaded");
     }
   }, []);
+  console.log(apiLists);
 
   return [apiLists, status];
 }
