@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./Nav";
-import GameForm from "./GameForm";
+import Game from "./Game";
 import Welcome from "./Welcome";
-import StudyListIndex from "./StudyListIndex";
 
 const Routes = () => {
   return (
@@ -11,9 +10,12 @@ const Routes = () => {
       <Router>
         <Nav />
         <Switch>
-          <Route exact path="/study_lists" render={() => <StudyListIndex />} />
-          <Route exact path="/game" render={() => <GameForm />} />
           <Route exact path="/" render={() => <Welcome />} />
+          <Route
+            exact
+            path="/study_lists/:study_list_id/game"
+            render={(props) => <Game {...props} />}
+          />
         </Switch>
       </Router>
     </div>
