@@ -7,7 +7,7 @@ const Welcome = () => {
   return (
     <div>
       <h1>Welcome to WerdNerd</h1>
-      <h2>Start playing now with one of our curated lists!</h2>
+      <h2>Start playing now with one of our word lists!</h2>
       <GameForm />
     </div>
   );
