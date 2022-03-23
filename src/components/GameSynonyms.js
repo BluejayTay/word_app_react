@@ -25,9 +25,3 @@ const GameSynonyms = (props) => {
 };
 
 export default GameSynonyms;
-
-//{synonyms.map((synonym) => (
-//<h1 key={synonym.name} value={synonym.name}>
-//  {synonym.name}, {synonyms.indexOf(synonym)}
-// </h1>
-//))}
