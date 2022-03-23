@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import axios from "axios";
-import GameWords from "./GameWords";
+import Word from "./Word";
 import GameSynonyms from "./GameSynonyms";
+import Timer from "./Timer";
+import ScoreBox from "./ScoreBox";
+import Basket from "./Basket";
+//import Xarrow from "react-xarrows";
 
 const Game = (props) => {
   const studyListId = props.match.params.study_list_id;
@@ -9,14 +15,14 @@ const Game = (props) => {
   const [words, setWords] = useState([]);
   const [synonyms, setSynonyms] = useState([]);
   const [gameStart, setGameStart] = useState(false);
-  //const [gameLoaded, setGameLoaded] = useState(false);
+  const [score, setScore] = useState(0);
+  const maxScore = words.length;
 
   useEffect(() => {
     requestGame();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function requestGame() {
-    //if (gameLoaded == false)
     axios
       .get(`http://localhost:3000/api/study_lists/${studyListId}/new_game`)
       .then((response) => {
@@ -25,25 +31,42 @@ const Game = (props) => {
         setSynonyms(response.data.synonyms);
         console.log(response.data);
       });
-    //setGameLoaded(true);
   }
 
   return (
-    <div>
-      Game for: {studyListId}, {title}
-      <button onClick={() => setGameStart(true)}>Start game</button>
-      <div style={{ display: "flex" }}>
-        <div>
-          <h1 style={{ color: "limegreen" }}>Words</h1>
-          <GameWords words={words} />
-        </div>
-        <div style={{ width: "100px" }}></div>
-        <div>
-          <h1 style={{ color: "blue" }}>Synonyms</h1>
-          <GameSynonyms synonyms={synonyms} gameStart={gameStart} />
+    <DndProvider backend={HTML5Backend}>
+      <div>
+        Game for: {studyListId}/{title}
+        <button onClick={() => setGameStart(true)}>Start game</button>
+        <Timer gameStart={gameStart} />
+        <ScoreBox score={score} maxScore={maxScore} />
+        <div style={{ display: "flex" }}>
+          <div id="words">
+            <h1 style={{ color: "limegreen" }}>Words</h1>
+            <div>
+              {words.map((word) => (
+                <div
+                  key={word.name}
+                  style={{ display: "flex", justifyContent: "end" }}
+                >
+                  <Word word={word} matchIndex={words.indexOf(word)} />
+                  <div>
+                    <Basket props={props} word={word} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ width: "250px" }}></div>
+
+          <div id="synonyms">
+            <h1 style={{ color: "blue" }}>Synonyms</h1>
+            <GameSynonyms synonyms={synonyms} gameStart={gameStart} />
+          </div>
         </div>
       </div>
-    </div>
+    </DndProvider>
   );
 };
 export default Game;
