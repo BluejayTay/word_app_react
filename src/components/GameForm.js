@@ -21,8 +21,8 @@ const GameForm = () => {
   return (
     <div>
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
           setToGame(true);
         }}
       >
@@ -31,8 +31,8 @@ const GameForm = () => {
           <select
             id="studyList"
             //value={studyList}
-            onChange={(e) => setStudyListId(e.target.value)}
-            onBlur={(e) => setStudyListId(e.target.value)}
+            onChange={(event) => setStudyListId(event.target.value)}
+            onBlur={(event) => setStudyListId(event.target.value)}
           >
             <option />
             {studyLists.map((List) => (
@@ -42,7 +42,7 @@ const GameForm = () => {
             ))}
           </select>
         </label>
-        <button>Play</button>
+        <button>Play WerdWeb!</button>
       </form>
     </div>
   );
