@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Word = ({ word, matchIndex }) => {
+const Word = ({ activeWord, select, word, matchedWords }) => {
   const name = word.name;
-  const [selected, setSelected] = useState(false);
+  const matchIndex = word.match_index;
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    matchedWords.includes(matchIndex)
+      ? setIsDisabled(true)
+      : setIsDisabled(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [matchedWords]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "end" }}>
-      <div style={{ background: "orange" }}>
-        <h1>{name}</h1>
-      </div>
+    <div id={`word${matchIndex}`}>
       <button
-        ref={word.matchIndex}
-        id={matchIndex}
-        value={matchIndex}
-        style={{ background: selected ? "blue" : "pink" }}
-        onClick={() => (!selected ? setSelected(true) : setSelected(false))}
+        disabled={isDisabled}
+        onClick={() => {
+          select(matchIndex);
+        }}
+        style={{
+          backgroundColor: activeWord == matchIndex ? "blue" : "orange",
+        }}
       >
-        {matchIndex}
+        {name}({matchIndex})
       </button>
     </div>
   );
