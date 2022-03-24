@@ -1,21 +1,35 @@
-//import { useState } from "react";
+import { useEffect, useState } from "react";
 import Synonym from "./Synonym";
 
-const GameSynonyms = (props) => {
-  const gameStart = props.gameStart;
-  const synonyms = props.synonyms;
+const GameSynonyms = ({
+  synonyms,
+  gameStart,
+  select,
+  activeSynonym,
+  matchedSynonyms,
+}) => {
+  const [shuffledSynonyms, setShuffledSynonyms] = useState([]);
 
-  let shuffledSynonyms = synonyms
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
+  useEffect(() => {
+    setShuffledSynonyms(
+      synonyms
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+    );
+  }, [gameStart, synonyms]);
 
   if (gameStart == true)
     return (
       <div>
         {shuffledSynonyms.map((synonym) => (
           <div key={synonym.name}>
-            <Synonym synonym={synonym} matchIndex={synonyms.indexOf(synonym)} />
+            <Synonym
+              matchedSynonyms={matchedSynonyms}
+              synonym={synonym}
+              activeSynonym={activeSynonym}
+              select={select}
+            />
           </div>
         ))}
         .
