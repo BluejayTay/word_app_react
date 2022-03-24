@@ -1,34 +1,31 @@
-import { useState } from "react";
-import { useDrag } from "react-dnd";
+import { useState, useEffect } from "react";
 
-const Synonym = ({ synonym, matchIndex }) => {
+const Synonym = ({ synonym, select, activeSynonym, matchedSynonyms }) => {
   const name = synonym.name;
-  //const id = synonym.id;
-  const [selected, setSelected] = useState(false);
-  const [{ isDragging }, dragRef] = useDrag({
-    type: "synonym",
-    item: {
-      name: name,
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
+  const matchIndex = synonym.match_index;
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    matchedSynonyms.includes(matchIndex)
+      ? setIsDisabled(true)
+      : setIsDisabled(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [matchedSynonyms]);
 
   return (
-    <div style={{ display: "flex" }} ref={dragRef}>
-      {isDragging}
+    <div id={`syn${matchIndex}`}>
       <button
-        id={matchIndex}
-        value={matchIndex}
-        style={{ background: selected ? "blue" : "pink" }}
-        onClick={() => (!selected ? setSelected(true) : setSelected(false))}
+        disabled={isDisabled}
+        onClick={() => {
+          select(matchIndex);
+        }}
+        style={{
+          backgroundColor: activeSynonym == matchIndex ? "blue" : "orange",
+        }}
       >
-        {matchIndex}
+        {" "}
+        {name}({matchIndex})
       </button>
-      <div style={{ background: "orange" }}>
-        <h1>{name}</h1>
-      </div>
     </div>
   );
 };
