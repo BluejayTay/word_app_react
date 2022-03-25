@@ -21,6 +21,7 @@ const Synonym = ({ synonym, select, activeSynonym, matchedSynonyms }) => {
         }}
         style={{
           backgroundColor: activeSynonym == matchIndex ? "blue" : "orange",
+          fontSize: "24px",
         }}
       >
         {" "}
