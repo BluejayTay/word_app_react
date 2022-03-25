@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
-import HighScore from "./HighScore";
+import axios from "axios";
 
-const Timer = ({ studyListId, gameStart, gameEnd, previousHighScore }) => {
+const Timer = ({
+  studyListId,
+  gameStart,
+  gameEnd,
+  fastestTimeRecord,
+  loadSavedScore,
+}) => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [saveScoreStatus, setSaveScoreStatus] = useState("");
 
   useEffect(() => {
-    if (gameStart == true) setIsActive(true);
-  }, [gameStart]);
-
-  useEffect(() => {
-    if (gameEnd == true) setIsActive(false);
-  }, [gameEnd]);
+    if (gameStart == true && gameEnd == false) setIsActive(true);
+    else if (gameStart == true && gameEnd == true) setIsActive(false);
+    else if (gameEnd == false && gameStart == false) {
+      setIsActive(false);
+      setSeconds(0);
+      setSaveScoreStatus("");
+    }
+  }, [gameStart, gameEnd]);
 
   useEffect(() => {
     let interval = null;
@@ -23,6 +32,26 @@ const Timer = ({ studyListId, gameStart, gameEnd, previousHighScore }) => {
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
+  useEffect(() => {
+    if (gameEnd == true)
+      if (
+        (fastestTimeRecord == null && seconds > fastestTimeRecord) ||
+        seconds < fastestTimeRecord
+      )
+        handleSaveTime();
+
+    async function handleSaveTime() {
+      setSaveScoreStatus("saving");
+      axios.put(`http://localhost:3000/api/study_lists/${studyListId}`, {
+        high_score: seconds,
+      });
+      setSaveScoreStatus("New record saved!");
+      loadSavedScore(seconds);
+    }
+    return [saveScoreStatus];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameEnd]);
+
   return (
     <div
       style={{
@@ -33,13 +62,9 @@ const Timer = ({ studyListId, gameStart, gameEnd, previousHighScore }) => {
       }}
     >
       <div>Timer:</div>
-      <div className="time">{seconds}s</div>
-      <HighScore
-        studyListId={studyListId}
-        gameEnd={gameEnd}
-        score={seconds}
-        previousHighScore={previousHighScore}
-      />
+      <div className="time" style={{ fontSize: "32px" }}>
+        {seconds}s<div style={{ fontSize: "24px" }}>{saveScoreStatus}</div>
+      </div>
     </div>
   );
 };
