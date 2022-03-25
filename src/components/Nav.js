@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav style={{ backgroundColor: "silver" }}>
       <Link to="/">WerdNerd</Link>
     </nav>
   );
