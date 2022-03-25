@@ -21,6 +21,7 @@ const Word = ({ activeWord, select, word, matchedWords }) => {
         }}
         style={{
           backgroundColor: activeWord == matchIndex ? "blue" : "orange",
+          fontSize: "24px",
         }}
       >
         {name}({matchIndex})
