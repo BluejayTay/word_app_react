@@ -11,10 +11,10 @@ const Game = (props) => {
   const [title, setTitle] = useState("");
   const [words, setWords] = useState([]);
   const [synonyms, setSynonyms] = useState([]);
-  const [previousHighScore, setPreviousHighScore] = useState();
-  const [activeWord, setActiveWord] = useState(0);
-  const [activeSynonym, setActiveSynonym] = useState(-1);
+  const [fastestTimeRecord, setFastedTimeRecord] = useState();
   const [gameStart, setGameStart] = useState(false);
+  const [activeWord, setActiveWord] = useState(null);
+  const [activeSynonym, setActiveSynonym] = useState(null);
   const [maxMatchNum, setMaxMatchNum] = useState();
   const [matchCount, setMatchCount] = useState(0);
   const [matchedWords, setMatchedWords] = useState([]);
@@ -33,13 +33,17 @@ const Game = (props) => {
         setWords(response.data.words);
         setSynonyms(response.data.synonyms);
         setMaxMatchNum(response.data.words.length);
-        setPreviousHighScore(response.data.study_list.high_score);
+        setFastedTimeRecord(response.data.study_list.high_score);
         console.log(response.data);
       });
   }
 
   useEffect(() => {
-    if (activeSynonym == activeWord) {
+    if (
+      activeSynonym == activeWord &&
+      activeSynonym != null &&
+      activeWord != null
+    ) {
       setMatchCount(matchCount + 1);
       setMatchedWords([...matchedWords, activeWord]);
       setMatchedSynonyms([...matchedSynonyms, activeSynonym]);
@@ -48,23 +52,55 @@ const Game = (props) => {
   }, [activeSynonym, activeWord]);
 
   useEffect(() => {
-    if (matchCount == maxMatchNum) setGameEnd(true);
+    if (matchCount == maxMatchNum) {
+      setGameEnd(true);
+      setActiveSynonym(null);
+      setActiveWord(null);
+    }
   }, [matchCount, maxMatchNum]);
+
+  useEffect(() => {
+    setActiveSynonym(null);
+  }, [activeWord]);
+
+  const handleResetGame = () => {
+    setGameStart(false);
+    setGameEnd(false);
+    setMatchCount(0);
+    setActiveSynonym(null);
+    setActiveWord(null);
+    setMatchedWords([]);
+    setMatchedSynonyms([]);
+    requestGame();
+  };
 
   return (
     <div>
-      WerdWeb Game for: {title}
-      <button onClick={() => setGameStart(true)}>Start game</button>
-      <div style={{ backgroundColor: "grey" }}>
-        HighScore: {previousHighScore}
+      <div style={{ fontSize: "32px" }}>
+        WerdWeb Game for: {title}
+        {gameStart == false ? (
+          <button onClick={() => setGameStart(true)}>Start Game</button>
+        ) : (
+          <button onClick={handleResetGame}>Reset Game</button>
+        )}
       </div>
-      <Timer
-        studyListId={studyListId}
-        gameStart={gameStart}
-        gameEnd={gameEnd}
-        previousHighScore={previousHighScore}
-      />
-      <MatchCountDisplay matchCount={matchCount} maxMatchNum={maxMatchNum} />
+
+      <div style={{ display: "flex" }}>
+        <div style={{ backgroundColor: "grey" }}>
+          Record for Fastest Time:
+          <div style={{ fontSize: "24px" }}>
+            10 matches in {fastestTimeRecord} seconds
+          </div>
+        </div>
+        <Timer
+          studyListId={studyListId}
+          gameStart={gameStart}
+          gameEnd={gameEnd}
+          fastestTimeRecord={fastestTimeRecord}
+          loadSavedScore={setFastedTimeRecord}
+        />
+        <MatchCountDisplay matchCount={matchCount} maxMatchNum={maxMatchNum} />
+      </div>
       <div style={{ display: "flex" }}>
         <div id="words">
           <h1 style={{ color: "limegreen" }}>Words</h1>
