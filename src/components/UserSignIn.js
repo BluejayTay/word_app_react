@@ -4,12 +4,10 @@ import axios from "axios";
 const UserSignIn = ({ setUser, user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [signedIn, setSignedIn] = useState(false);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    user ? setMessage(`Hello, ${user["email"]}`) : setMessage(`Not signed in`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    user ? setMessage(`Hello, ${user["email"]}!`) : setMessage(`Not signed in`);
   }, [user]);
 
   const handleSignIn = (event) => {
@@ -17,8 +15,10 @@ const UserSignIn = ({ setUser, user }) => {
 
     axios
       .post(`http://localhost:3000/api/users/login`, {
-        email: email,
-        password: password,
+        user: {
+          email: email,
+          password: password,
+        },
       })
       .then((response) => {
         localStorage.setItem("auth_token", response.data.auth_token);
