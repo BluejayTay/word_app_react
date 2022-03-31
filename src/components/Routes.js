@@ -8,7 +8,7 @@ import UserSignIn from "./UserSignIn";
 import axios from "axios";
 
 const Routes = () => {
-  const [payload, setPayload] = useState({});
+  //const [payload, setPayload] = useState({});
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Routes = () => {
           },
         })
         .then((response) => {
-          setPayload(response.data.payload);
+          //setPayload(response.data.payload);
           console.log(response.data);
           setUser(response.data.user);
         });
@@ -33,11 +33,7 @@ const Routes = () => {
       <Router>
         <Nav />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <Welcome user={user} payload={payload} />}
-          />
+          <Route exact path="/" render={() => <Welcome user={user} />} />
           <Route
             exact
             path="/study_lists/:study_list_id/game"
@@ -48,10 +44,10 @@ const Routes = () => {
             path="/study_lists/new"
             render={() => (
               <StudyListForm
-                payload={payload}
+                //payload={payload}
                 user={user}
                 setUser={setUser}
-                setPayload={setPayload}
+                //setPayload={setPayload}
               />
             )}
           />
@@ -62,8 +58,8 @@ const Routes = () => {
               <UserSignIn
                 user={user}
                 setUser={setUser}
-                payload={payload}
-                setPayload={setPayload}
+                //payload={payload}
+                //setPayload={setPayload}
               />
             )}
           />
