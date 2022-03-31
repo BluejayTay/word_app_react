@@ -8,17 +8,19 @@ const StudyListForm = ({ user }) => {
   const [wordsHash, setWordsHash] = useState({});
   const [wordsArray, setWordsArray] = useState([]);
   const [wordCount, setWordCount] = useState(1);
+  const [isReady, setIsReady] = useState(false);
   //const [error, setError] = useState()
 
   const formatWords = () => {
     setWordsArray(Object.values(wordsHash));
+    setIsReady(true);
   };
 
   const handleCreateStudyList = (event) => {
     event.preventDefault();
 
     const token = localStorage.getItem("auth_token");
-    if (token) {
+    if (isReady) {
       axios
         .post(
           `http://localhost:3000/api/study_lists`,
