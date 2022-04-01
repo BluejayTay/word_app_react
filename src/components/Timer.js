@@ -34,16 +34,13 @@ const Timer = ({
 
   useEffect(() => {
     if (gameEnd == true)
-      if (
-        (fastestTimeRecord == null && seconds > fastestTimeRecord) ||
-        seconds < fastestTimeRecord
-      )
+      if (fastestTimeRecord == null || seconds < fastestTimeRecord)
         handleSaveTime();
 
     async function handleSaveTime() {
       setSaveScoreStatus("saving");
       axios.put(`http://localhost:3000/api/study_lists/${studyListId}`, {
-        high_score: seconds,
+        study_list: { high_score: seconds },
       });
       setSaveScoreStatus("New record saved!");
       loadSavedScore(seconds);
