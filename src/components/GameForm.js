@@ -11,13 +11,26 @@ const GameForm = ({ user }) => {
   const [toGame, setToGame] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/api/study_lists`, { user_id: userId })
-      .then((response) => {
+    const token = localStorage.getItem("auth_token");
+    if (token)
+      axios
+        .get(`http://localhost:3000/api/study_lists`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          user_id: userId,
+        })
+        .then((response) => {
+          setStudyLists(response.data);
+          console.log(response.data);
+        });
+    if (!token)
+      axios.get(`http://localhost:3000/api/study_lists`).then((response) => {
         setStudyLists(response.data);
         console.log(response.data);
       });
-  }, [userId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (toGame == true) {
     return (
