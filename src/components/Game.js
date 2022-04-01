@@ -5,6 +5,7 @@ import GameSynonyms from "./GameSynonyms";
 import Timer from "./Timer";
 import MatchCountDisplay from "./MatchCountDisplay";
 import ConnectingLines from "./ConnectingLines";
+import RecordDisplay from "./RecordDisplay";
 
 const Game = (props) => {
   const studyListId = props.match.params.study_list_id;
@@ -74,10 +75,21 @@ const Game = (props) => {
     requestGame();
   };
 
+  const showRecord = () => {
+    if (fastestTimeRecord)
+      return (
+        <div>
+          {maxMatchNum} matches in {fastestTimeRecord} seconds <br></br>
+          (1 match/{fastestTimeRecord / maxMatchNum} seconds)
+        </div>
+      );
+    else return <span>N/A</span>;
+  };
+
   return (
     <div>
       <div style={{ fontSize: "32px" }}>
-        WerdWeb Game for: {title}
+        WerdWeb for: {title}
         {gameStart == false ? (
           <button onClick={() => setGameStart(true)}>Start Game</button>
         ) : (
@@ -86,12 +98,7 @@ const Game = (props) => {
       </div>
 
       <div style={{ display: "flex" }}>
-        <div style={{ backgroundColor: "grey" }}>
-          Record for Fastest Time:
-          <div style={{ fontSize: "24px" }}>
-            10 matches in {fastestTimeRecord} seconds
-          </div>
-        </div>
+        <RecordDisplay showRecord={showRecord} />
         <Timer
           studyListId={studyListId}
           gameStart={gameStart}
