@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import Game from "./Game";
 import Welcome from "./Welcome";
 import StudyListForm from "./StudyListForm";
-import UserSignIn from "./UserSignIn";
+import UserLogIn from "./UserLogIn";
 import axios from "axios";
 
 const Routes = () => {
@@ -42,26 +42,12 @@ const Routes = () => {
           <Route
             exact
             path="/study_lists/new"
-            render={() => (
-              <StudyListForm
-                //payload={payload}
-                user={user}
-                setUser={setUser}
-                //setPayload={setPayload}
-              />
-            )}
+            render={() => <StudyListForm user={user} />}
           />
           <Route
             exact
             path="/users/login"
-            render={() => (
-              <UserSignIn
-                user={user}
-                setUser={setUser}
-                //payload={payload}
-                //setPayload={setPayload}
-              />
-            )}
+            render={() => <UserLogIn user={user} setUser={setUser} />}
           />
         </Switch>
       </Router>

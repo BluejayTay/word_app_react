@@ -1,20 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-const UserSignIn = ({ setUser, user }) => {
+const UserSignUpForm = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    user ? setMessage(`Hello, ${user["email"]}!`) : setMessage(`Not signed in`);
-  }, [user]);
-
-  const handleSignIn = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:3000/api/users/login`, {
+      .post(`http://localhost:3000/api/users`, {
         user: {
           email: email,
           password: password,
@@ -30,17 +25,23 @@ const UserSignIn = ({ setUser, user }) => {
 
   return (
     <div>
-      <form onSubmit={handleSignIn}>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSignUp}>
         <label htmlFor="email">
-          <input onChange={(e) => setEmail(e.target.value)} />
+          <input
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
         <label htmlFor="password">
-          <input onChange={(e) => setPassword(e.target.value)} />
+          <input
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
-        <button type="submit">Sign in!</button>
+        <button type="submit">Sign Up for WerdNerd!</button>
       </form>
-      signed in status: {message}
     </div>
   );
 };
-export default UserSignIn;
+export default UserSignUpForm;
