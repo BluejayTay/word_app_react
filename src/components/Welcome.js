@@ -7,7 +7,7 @@ const Welcome = ({ user }) => {
   return (
     <div>
       <h1>Welcome to WerdNerd, {user["email"] || guest}!</h1>
-      <h2>Play the WerdWeb game with one of our word lists now!</h2>
+      <h2>Play WerdWeb now!</h2>
       <GameForm user={user} />
       <div>
         <Link to={`/study_lists/new`}>make a new word list!</Link>
