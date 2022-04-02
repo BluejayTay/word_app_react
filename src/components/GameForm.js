@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
-//import useApiLists from "./useApiLists";
 import axios from "axios";
-//import Game from "./Game";
 
-const GameForm = ({ user }) => {
-  const userId = user["id"];
+const GameForm = ({ user, setError }) => {
   const [studyLists, setStudyLists] = useState([]);
   const [studyListId, setStudyListId] = useState();
   const [toGame, setToGame] = useState(false);
@@ -18,7 +15,7 @@ const GameForm = ({ user }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          user_id: userId,
+          user_id: user["id"],
         })
         .then((response) => {
           setStudyLists(response.data);
@@ -32,7 +29,12 @@ const GameForm = ({ user }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (toGame == true) {
+  const handleGame = () => {
+    if (studyListId) setToGame(true);
+    if (!studyListId) setError("Error: Please select a list before submitting");
+  };
+
+  if (toGame && studyListId) {
     return (
       <Redirect
         to={{
@@ -47,7 +49,7 @@ const GameForm = ({ user }) => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          setToGame(true);
+          handleGame();
         }}
       >
         <label htmlFor="studyList">
