@@ -59,9 +59,8 @@ const Timer = ({
       }}
     >
       <div>Timer:</div>
-      <div className="time" style={{ fontSize: "32px" }}>
-        {seconds}s<div style={{ fontSize: "24px" }}>{saveScoreStatus}</div>
-      </div>
+      <div style={{ fontSize: "32px" }}>{seconds}s</div>
+      <div style={{ fontSize: "24px" }}>{saveScoreStatus}</div>
     </div>
   );
 };
