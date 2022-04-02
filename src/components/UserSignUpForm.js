@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const UserSignUpForm = ({ setUser }) => {
+const UserSignUpForm = ({ setUser, setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +21,8 @@ const UserSignUpForm = ({ setUser }) => {
         console.log(response.data.auth_token);
         console.log(response.data.user);
       });
+
+    setIsLoggedIn(true);
   };
 
   return (

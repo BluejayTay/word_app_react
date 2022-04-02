@@ -1,29 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UserLogInForm from "./UserLogInForm";
 import UserSignUpForm from "./UserSignUpForm";
+import { Redirect } from "react-router-dom";
 
 const UserLogIn = ({ setUser, user }) => {
-  const [message, setMessage] = useState("");
   const [form, setForm] = useState("login");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    user
-      ? setMessage(`Currently logged-in as: ${user["email"]}!`)
-      : setMessage(`Not logged-in`);
-  }, [user]);
+  if (isLoggedIn == true) {
+    return (
+      <Redirect
+        to={{
+          pathname: `/`,
+        }}
+      />
+    );
+  }
 
   const renderForm = () => {
     switch (form) {
       case "signup":
-        return <UserSignUpForm user={user} setUser={setUser} />;
+        return (
+          <UserSignUpForm
+            user={user}
+            setUser={setUser}
+            setIsLoggedIn={setIsLoggedIn}
+          />
+        );
       default:
-        return <UserLogInForm user={user} setUser={setUser} />;
+        return (
+          <UserLogInForm
+            user={user}
+            setUser={setUser}
+            setIsLoggedIn={setIsLoggedIn}
+          />
+        );
     }
   };
 
   return (
     <div>
-      <div>{message}</div>
+      <h1>User Sign-up/Log-in</h1>
       <div>
         <button
           onClick={() => {
