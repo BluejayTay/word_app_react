@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const UserLogInForm = ({ setUser, setIsLoggedIn }) => {
+const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,9 +19,14 @@ const UserLogInForm = ({ setUser, setIsLoggedIn }) => {
         localStorage.setItem("auth_token", response.data.auth_token);
         setUser(response.data.user);
         console.log(response.data);
+        setIsLoggedIn(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(
+          "An error occurred while logging in. Please make sure email and password are correct and try again."
+        );
       });
-
-    setIsLoggedIn(true);
   };
 
   return (

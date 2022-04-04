@@ -2,10 +2,12 @@ import { useState } from "react";
 import UserLogInForm from "./UserLogInForm";
 import UserSignUpForm from "./UserSignUpForm";
 import { Redirect } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage";
 
-const UserLogIn = ({ setUser, user }) => {
+const UserLogIn = ({ setUser }) => {
   const [form, setForm] = useState("login");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState("");
 
   if (isLoggedIn == true) {
     return (
@@ -22,17 +24,17 @@ const UserLogIn = ({ setUser, user }) => {
       case "signup":
         return (
           <UserSignUpForm
-            user={user}
             setUser={setUser}
             setIsLoggedIn={setIsLoggedIn}
+            setError={setError}
           />
         );
       default:
         return (
           <UserLogInForm
-            user={user}
             setUser={setUser}
             setIsLoggedIn={setIsLoggedIn}
+            setError={setError}
           />
         );
     }
@@ -40,6 +42,7 @@ const UserLogIn = ({ setUser, user }) => {
 
   return (
     <div>
+      <ErrorMessage error={error} setError={setError} />
       <h1>User Sign-up/Log-in</h1>
       <div>
         <button

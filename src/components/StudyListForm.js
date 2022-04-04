@@ -1,15 +1,21 @@
 import { useState } from "react";
 import axios from "axios";
 import WordField from "./WordField";
+import { Redirect } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage";
 
-const StudyListForm = ({ user }) => {
-  const userId = user["id"];
+const StudyListForm = ({ user, setSuccessMessage }) => {
   const [title, setTitle] = useState("");
   const [wordsHash, setWordsHash] = useState({});
   const [wordsArray, setWordsArray] = useState([]);
   const [wordCount, setWordCount] = useState(1);
   const [isReady, setIsReady] = useState(false);
-  //const [error, setError] = useState()
+  const [isListCreated, setIsListCreated] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleWordsHash = (event) => {
+    setWordsHash({ ...wordsHash, [event.target.name]: event.target.value });
+  };
 
   const formatWords = () => {
     setWordsArray(Object.values(wordsHash));
@@ -25,7 +31,7 @@ const StudyListForm = ({ user }) => {
         .post(
           `http://localhost:3000/api/study_lists`,
           {
-            study_list: { title: title, user_id: userId },
+            study_list: { title: title, user_id: user["id"] },
             words: wordsArray,
           },
           {
@@ -36,17 +42,32 @@ const StudyListForm = ({ user }) => {
         )
         .then((response) => {
           console.log(response.data);
+          setIsListCreated(true);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsReady(false);
+          setError(
+            "An error occurred while making the list. Please make sure to include a title and 1-10 valid words and try again."
+          );
         });
     }
   };
 
-  const handleWordsHash = (event) => {
-    setWordsHash({ ...wordsHash, [event.target.name]: event.target.value });
-  };
+  if (isListCreated) {
+    setSuccessMessage("New list created!");
+    return (
+      <Redirect
+        to={{
+          pathname: `/`,
+        }}
+      />
+    );
+  }
 
   return (
     <div id="studyListForm">
-      <div id="errors"></div>
+      <ErrorMessage error={error} setError={setError} />
       <form onSubmit={handleCreateStudyList}>
         <div>Make a new list</div>
         <label htmlFor="title">Title</label>
@@ -67,14 +88,15 @@ const StudyListForm = ({ user }) => {
               />
             );
           })}
-
-          <button
-            onClick={() => {
-              setWordCount(wordCount + 1);
-            }}
-          >
-            add word
-          </button>
+          {wordCount < 10 ? (
+            <button
+              onClick={() => {
+                setWordCount(wordCount + 1);
+              }}
+            >
+              add word
+            </button>
+          ) : null}
         </div>
 
         <button onClick={formatWords} type="submit">

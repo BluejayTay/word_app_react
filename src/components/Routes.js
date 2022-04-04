@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Routes = () => {
   const [user, setUser] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -29,9 +30,19 @@ const Routes = () => {
   return (
     <div>
       <Router>
-        <Nav user={user} setUser={setUser} />
+        <Nav setUser={setUser} />
         <Switch>
-          <Route exact path="/" render={() => <Welcome user={user} />} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Welcome
+                user={user}
+                successMessage={successMessage}
+                setSuccessMessage={setSuccessMessage}
+              />
+            )}
+          />
           <Route
             exact
             path="/study_lists/:study_list_id/game"
@@ -40,12 +51,17 @@ const Routes = () => {
           <Route
             exact
             path="/study_lists/new"
-            render={() => <StudyListForm user={user} />}
+            render={() => (
+              <StudyListForm
+                user={user}
+                setSuccessMessage={setSuccessMessage}
+              />
+            )}
           />
           <Route
             exact
             path="/users/login"
-            render={() => <UserLogIn user={user} setUser={setUser} />}
+            render={() => <UserLogIn setUser={setUser} />}
           />
         </Switch>
       </Router>
