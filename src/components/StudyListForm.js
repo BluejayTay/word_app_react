@@ -30,7 +30,7 @@ const StudyListForm = ({ user }) => {
     if (isReady) {
       axios
         .post(
-          `${API_ROOT}/api/study_lists`,
+          `${API_ROOT}api/study_lists`,
           {
             study_list: { title: title, user_id: user["id"] },
             words: wordsArray,
