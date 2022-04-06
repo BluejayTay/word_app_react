@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 import WordField from "./WordField";
 import { Redirect } from "react-router-dom";
@@ -29,7 +30,7 @@ const StudyListForm = ({ user, setSuccessMessage }) => {
     if (isReady) {
       axios
         .post(
-          `http://localhost:3000/api/study_lists`,
+          `${API_ROOT}api/study_lists`,
           {
             study_list: { title: title, user_id: user["id"] },
             words: wordsArray,
@@ -48,7 +49,7 @@ const StudyListForm = ({ user, setSuccessMessage }) => {
           console.log(error);
           setIsReady(false);
           setError(
-            "An error occurred while making the list. Please make sure to include a title and 1-10 valid words and try again."
+            "Error: Please make sure to include a title and 1-10 valid words and try again."
           );
         });
     }

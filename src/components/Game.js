@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 import Word from "./Word";
 import GameSynonyms from "./GameSynonyms";
@@ -28,7 +29,7 @@ const Game = (props) => {
 
   async function requestGame() {
     axios
-      .get(`http://localhost:3000/api/study_lists/${studyListId}/new_game`)
+      .get(`${API_ROOT}api/study_lists/${studyListId}/new_game`)
       .then((response) => {
         setTitle(response.data.study_list.title);
         setWords(response.data.words);

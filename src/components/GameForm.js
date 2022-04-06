@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
+import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
 const GameForm = ({ user, setError }) => {
@@ -11,7 +12,7 @@ const GameForm = ({ user, setError }) => {
     const token = localStorage.getItem("auth_token");
     if (token)
       axios
-        .get(`http://localhost:3000/api/study_lists`, {
+        .get(`${API_ROOT}api/study_lists`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

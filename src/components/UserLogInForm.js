@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
 const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
@@ -9,7 +10,7 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:3000/api/users/login`, {
+      .post(`${API_ROOT}api/users/login`, {
         user: {
           email: email,
           password: password,
@@ -24,7 +25,7 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
       .catch((error) => {
         console.log(error);
         setError(
-          "An error occurred while logging in. Please make sure the email and password are correctly entered and try again."
+          "Error: Please make sure the email and password are correctly entered and try again."
         );
       });
   };

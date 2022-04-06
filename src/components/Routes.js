@@ -5,6 +5,7 @@ import Game from "./Game";
 import Welcome from "./Welcome";
 import StudyListForm from "./StudyListForm";
 import UserLogIn from "./UserLogIn";
+import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
 const Routes = () => {
@@ -15,7 +16,7 @@ const Routes = () => {
     const token = localStorage.getItem("auth_token");
     if (token) {
       axios
-        .get(`http://localhost:3000/api/users/auto_login`, {
+        .get(`${API_ROOT}api/users/auto_login`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

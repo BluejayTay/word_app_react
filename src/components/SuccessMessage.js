@@ -2,17 +2,18 @@ const SuccessMessage = ({ successMessage, setSuccessMessage }) => {
   if (successMessage) {
     return (
       <div
-        className="d-flex justify-content-center align-items-center alert alert-success p-1"
+        id="victory"
+        className="d-flex justify-content-center align-items-center alert p-1"
         role="alert"
       >
         <div>{successMessage}</div>
         <button
-          className="btn btn-success"
+          className="btn btn-victory py-0 ms-1"
           onClick={() => {
             setSuccessMessage("");
           }}
         >
-          X
+          <i className="bi bi-x p-0"></i>
         </button>
       </div>
     );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
 const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
@@ -10,7 +11,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:3000/api/users`, {
+      .post(`${API_ROOT}api/users`, {
         user: {
           email: email,
           password: password,
@@ -27,7 +28,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
       .catch((error) => {
         console.log(error);
         setError(
-          "An error occurred while creating new user. Please make sure to use valid email formatting and that password entries match and try agian."
+          "Error: Please make sure the form is complete and password entries match and try agian."
         );
       });
   };

@@ -20,7 +20,7 @@ code {
 .navbar-brand {
   font-family: "Rampart One", sans-serif;
   font-size: 36px;
-  color: #ff621f;
+  color: #ee500c;
 }
 a:hover.navbar-brand {
   text-decoration: none;
@@ -95,4 +95,12 @@ a:hover.navbar-brand {
 }
 .btn:focus {
   box-shadow: none;
+}
+.btn-victory {
+  background-color: #dbff0d;
+}
+#victory {
+  background-color: #edffad;
+  font-size: 16px;
+  font-weight: 400;
 }
