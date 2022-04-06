@@ -14,7 +14,7 @@ const Game = (props) => {
   const [synonyms, setSynonyms] = useState([]);
   const [fastestTimeRecord, setFastedTimeRecord] = useState();
   const [gameStart, setGameStart] = useState(false);
-  const [activeWord, setActiveWord] = useState(null);
+  const [activeWord, setActiveWord] = useState(0);
   const [activeSynonym, setActiveSynonym] = useState(null);
   const [maxMatchNum, setMaxMatchNum] = useState();
   const [matchCount, setMatchCount] = useState(0);
@@ -69,7 +69,7 @@ const Game = (props) => {
     setGameEnd(false);
     setMatchCount(0);
     setActiveSynonym(null);
-    setActiveWord(null);
+    setActiveWord(0);
     setMatchedWords([]);
     setMatchedSynonyms([]);
     requestGame();
@@ -91,9 +91,16 @@ const Game = (props) => {
       <div style={{ fontSize: "32px" }}>
         WerdWeb for: {title}
         {gameStart == false ? (
-          <button onClick={() => setGameStart(true)}>Start Game</button>
+          <button
+            className="btn btn-lg btn-primary"
+            onClick={() => setGameStart(true)}
+          >
+            Start Game
+          </button>
         ) : (
-          <button onClick={handleResetGame}>Reset Game</button>
+          <button className="btn btn-lg btn-primary" onClick={handleResetGame}>
+            Reset Game
+          </button>
         )}
       </div>
 
