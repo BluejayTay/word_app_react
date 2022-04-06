@@ -2,17 +2,18 @@ const ErrorMessage = ({ error, setError }) => {
   if (error) {
     return (
       <div
-        className="d-flex justify-content-center align-items-center alert alert-danger p-1"
+        id="error"
+        className="d-flex justify-content-center align-items-center alert p-1"
         role="alert"
       >
         <div>{error}</div>
         <button
-          className="btn btn-danger"
+          className="btn dismiss py-0 ms-1"
           onClick={() => {
             setError("");
           }}
         >
-          X
+          <i className="bi bi-x p-0"></i>
         </button>
       </div>
     );
