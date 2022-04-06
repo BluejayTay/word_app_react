@@ -19,9 +19,9 @@ const Synonym = ({ synonym, select, activeSynonym, matchedSynonyms }) => {
         onClick={() => {
           select(matchIndex);
         }}
+        className="btn synonym-btn"
         style={{
-          backgroundColor: activeSynonym == matchIndex ? "blue" : "orange",
-          fontSize: "24px",
+          backgroundColor: activeSynonym == matchIndex ? "#ddf269" : "",
         }}
       >
         {" "}

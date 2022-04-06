@@ -5,7 +5,6 @@ import SuccessMessage from "./SuccessMessage";
 import GameForm from "./GameForm";
 
 const Welcome = ({ user, successMessage, setSuccessMessage }) => {
-  const guest = "fellow nerd";
   const [error, setError] = useState("");
 
   return (
@@ -17,16 +16,19 @@ const Welcome = ({ user, successMessage, setSuccessMessage }) => {
       />
       <div className="container">
         <h1 className="text-center mt-5">
-          Welcome to <span className="welcome-brand">WerdNerd</span>,{" "}
-          {user["email"] || guest}!
+          Welcome, {user["email"] || `fellow nerd`}!
         </h1>
-        <h2 className="text-center">The place to play word games!</h2>
-        <h2>
-          Play <span className="welcome-brand">WerdWeb</span> now!
-        </h2>
-        <GameForm user={user} error={error} setError={setError} />
+
+        <div className="form text-center mt-5">
+          <h2>
+            Play <span className="brand-style">WerdWeb</span> now!
+          </h2>
+          <GameForm user={user} error={error} setError={setError} />
+        </div>
         <div>
-          <Link to={`/study_lists/new`}>make a new word list!</Link>
+          <Link to={`/study_lists/new`} className="btn btn-new">
+            Make a new word list!
+          </Link>
         </div>
       </div>
     </div>
