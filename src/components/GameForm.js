@@ -23,10 +23,12 @@ const GameForm = ({ user, setError }) => {
           console.log(response.data);
         });
     if (!token)
-      axios.get(`http://localhost:3000/api/study_lists`).then((response) => {
-        setStudyLists(response.data);
-        console.log(response.data);
-      });
+      axios
+        .get(`https://werd-nerd-2.herokuapp.com/api/study_lists`)
+        .then((response) => {
+          setStudyLists(response.data);
+          console.log(response.data);
+        });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
