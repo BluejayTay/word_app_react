@@ -12,7 +12,7 @@ const GameForm = ({ user, setError }) => {
     const token = localStorage.getItem("auth_token");
     if (token)
       axios
-        .get(`${API_ROOT}/api/study_lists`, {
+        .get(`${API_ROOT}api/study_lists`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -23,7 +23,7 @@ const GameForm = ({ user, setError }) => {
           console.log(response.data);
         });
     if (!token)
-      axios.get(`${API_ROOT}/api/study_lists`).then((response) => {
+      axios.get(`${API_ROOT}api/study_lists`).then((response) => {
         setStudyLists(response.data);
         console.log(response.data);
       });
