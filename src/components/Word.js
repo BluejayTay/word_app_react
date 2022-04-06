@@ -19,9 +19,9 @@ const Word = ({ activeWord, select, word, matchedWords }) => {
         onClick={() => {
           select(matchIndex);
         }}
+        className="btn word-btn"
         style={{
-          backgroundColor: activeWord == matchIndex ? "blue" : "orange",
-          fontSize: "24px",
+          backgroundColor: activeWord == matchIndex ? "#ddf269" : "",
         }}
       >
         {name}({matchIndex})
