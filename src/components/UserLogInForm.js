@@ -10,7 +10,7 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
     event.preventDefault();
 
     axios
-      .post(`${API_ROOT}api/users/login`, {
+      .post(`${API_ROOT}/api/users/login`, {
         user: {
           email: email,
           password: password,

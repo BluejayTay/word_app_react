@@ -11,7 +11,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
     event.preventDefault();
 
     axios
-      .post(`${API_ROOT}api/users`, {
+      .post(`${API_ROOT}/api/users`, {
         user: {
           email: email,
           password: password,

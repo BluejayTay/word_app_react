@@ -5,7 +5,7 @@ import WordField from "./WordField";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 
-const StudyListForm = ({ user, setSuccessMessage }) => {
+const StudyListForm = ({ user }) => {
   const [title, setTitle] = useState("");
   const [wordsHash, setWordsHash] = useState({});
   const [wordsArray, setWordsArray] = useState([]);
@@ -30,7 +30,7 @@ const StudyListForm = ({ user, setSuccessMessage }) => {
     if (isReady) {
       axios
         .post(
-          `${API_ROOT}api/study_lists`,
+          `${API_ROOT}/api/study_lists`,
           {
             study_list: { title: title, user_id: user["id"] },
             words: wordsArray,
@@ -56,7 +56,6 @@ const StudyListForm = ({ user, setSuccessMessage }) => {
   };
 
   if (isListCreated) {
-    setSuccessMessage("New list created!");
     return (
       <Redirect
         to={{
