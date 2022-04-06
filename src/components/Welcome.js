@@ -1,19 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
-import SuccessMessage from "./SuccessMessage";
 import GameForm from "./GameForm";
 
-const Welcome = ({ user, successMessage, setSuccessMessage }) => {
+const Welcome = ({ user }) => {
   const [error, setError] = useState("");
 
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      <SuccessMessage
-        successMessage={successMessage}
-        setSuccessMessage={setSuccessMessage}
-      />
       <div className="container">
         <h1 className="text-center mt-5">
           Welcome, {user["email"] || `fellow nerd`}!
