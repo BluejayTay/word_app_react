@@ -67,7 +67,7 @@ const GameForm = ({ user, setError }) => {
             ))}
           </select>
         </label>
-        <button>Play WerdWeb!</button>
+        <button className="btn btn-play">Play</button>
       </form>
     </div>
   );
