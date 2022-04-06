@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_ROOT } from "../apiRoot";
 
 const Timer = ({
   studyListId,
@@ -39,7 +40,7 @@ const Timer = ({
 
     async function handleSaveTime() {
       setSaveScoreStatus("saving");
-      axios.put(`http://localhost:3000/api/study_lists/${studyListId}`, {
+      axios.put(`${API_ROOT}api/study_lists/${studyListId}`, {
         study_list: { high_score: seconds },
       });
       setSaveScoreStatus("New record saved!");
