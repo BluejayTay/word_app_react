@@ -24,7 +24,7 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
       .catch((error) => {
         console.log(error);
         setError(
-          "An error occurred while logging in. Please make sure email and password are correct and try again."
+          "An error occurred while logging in. Please make sure the email and password are correctly entered and try again."
         );
       });
   };
