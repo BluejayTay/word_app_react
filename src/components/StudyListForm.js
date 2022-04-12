@@ -4,6 +4,21 @@ import axios from "axios";
 import WordField from "./WordField";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
+import styled from "styled-components";
+
+const StyledStudyListForm = styled.div`
+  background-color: #e6fdff;
+  .brand-style {
+    font-family: "Rampart One", sans-serif;
+    color: #100804;
+  }
+  .add-btn {
+    background-color: #e7fb9d;
+    color: #ff621f;
+  }
+  .bi-plus-square-fill {
+  }
+`;
 
 const StudyListForm = ({ user }) => {
   const [title, setTitle] = useState("");
@@ -66,43 +81,54 @@ const StudyListForm = ({ user }) => {
   }
 
   return (
-    <div id="studyListForm">
+    <div>
       <ErrorMessage error={error} setError={setError} />
-      <form onSubmit={handleCreateStudyList}>
-        <div>Make a new list</div>
-        <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          placeholder="Title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <div>
-          <label htmlFor="words">Add Words </label>
-
-          {[...Array(wordCount)].map((_, index) => {
-            return (
-              <WordField
-                key={index}
-                wordIndex={index}
-                handleWordsHash={handleWordsHash}
+      <div className="container d-flex justify-content-center">
+        <StyledStudyListForm className="col-md-8 card p-5 my-5 justify-content-center">
+          <form onSubmit={handleCreateStudyList}>
+            <h1 className="brand-style text-center mb-4">Make a new list</h1>
+            <div>
+              <label htmlFor="title">Title</label>
+              <input
+                id="title"
+                placeholder="Title"
+                onChange={(e) => setTitle(e.target.value)}
               />
-            );
-          })}
-          {wordCount < 10 ? (
-            <button
-              onClick={() => {
-                setWordCount(wordCount + 1);
-              }}
-            >
-              add word
-            </button>
-          ) : null}
-        </div>
+              <div>
+                <label htmlFor="words">Add Words </label>
 
-        <button onClick={formatWords} type="submit">
-          Submit
-        </button>
-      </form>
+                {[...Array(wordCount)].map((_, index) => {
+                  return (
+                    <WordField
+                      key={index}
+                      wordIndex={index}
+                      handleWordsHash={handleWordsHash}
+                    />
+                  );
+                })}
+              </div>
+              <div className="d-flex justify-content-between">
+                <div>
+                  {wordCount < 10 ? (
+                    <button
+                      onClick={() => {
+                        setWordCount(wordCount + 1);
+                      }}
+                    >
+                      <i className="bi bi-plus-lg"></i>
+                    </button>
+                  ) : null}
+                </div>
+                <div>
+                  <button onClick={formatWords} type="submit">
+                    submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </StyledStudyListForm>
+      </div>
     </div>
   );
 };
