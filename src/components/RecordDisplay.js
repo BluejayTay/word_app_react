@@ -1,8 +1,18 @@
-const RecordDisplay = ({ showRecord }) => {
+const RecordDisplay = ({ fastestTimeRecord }) => {
+  const showRecord = () => {
+    if (fastestTimeRecord)
+      return (
+        <div>
+          {fastestTimeRecord}s <br></br>
+        </div>
+      );
+    else return <span>N/A</span>;
+  };
+
   return (
-    <div style={{ backgroundColor: "grey" }}>
+    <div className="col record-display m-1 p-1">
       Record:
-      <div style={{ fontSize: "24px" }}>{showRecord()}</div>
+      <h2 className="text-center">{showRecord()}</h2>
     </div>
   );
 };
