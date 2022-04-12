@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
+  @media only screen and (max-width: 450px) {
+    .navbar-brand {
+      font-size: 26px;
+    }
+    .btn-login,
+    .btn-logout,
+    .bi-house-fill {
+      font-size: 14px;
+    }
+  }
   .navbar-brand {
     font-family: "Rampart One", sans-serif;
     font-size: 32px;
@@ -69,7 +79,7 @@ const Nav = ({ setUser }) => {
   return (
     <StyledNav>
       <nav className="navbar p-0">
-        <div className="container-fluid ">
+        <div className="container-fluid">
           <Link className="navbar-brand" to={"/"}>
             WerdNerd
           </Link>

@@ -8,10 +8,21 @@ import StatsPanel from "./StatsPanel";
 import GameWords from "./GameWords";
 
 const StyledGame = styled.div`
+  @media only screen and (max-width: 450px) {
+    .brand-title {
+      font-size: 28px;
+    }
+    .record-display,
+    .timer-display,
+    .match-display,
+    .message-display {
+      fontsize: 12px;
+    }
+  }
   .game-start-btn {
     background-color: #d1ed31;
   }
-  .brand-style {
+  .brand-title {
     font-family: "Rampart One", sans-serif;
     font-size: 48px;
   }
@@ -20,7 +31,7 @@ const StyledGame = styled.div`
   }
   .message-display {
     background-color: #fcffee;
-    fontsize: "18px";
+    fontsize: 18px;
   }
 
   .record-display,
@@ -28,7 +39,7 @@ const StyledGame = styled.div`
   .match-display {
     background-color: #3d3a39;
     color: #d6fdff;
-    fontsize: "18px";
+    fontsize: 18px;
     border: 1px solid #d6fdff;
   }
   .game-title {
@@ -123,46 +134,48 @@ const Game = (props) => {
 
   return (
     <StyledGame>
-      <div className="card m-5">
-        <div className="card-header game-title">
-          <h1 className="brand-style text-center">{title}</h1>
-        </div>
-        <div className="row d-flex g-0">
-          <StatsPanel
-            gameEnd={gameEnd}
-            gameStart={gameStart}
-            matchCount={matchCount}
-            maxMatchNum={maxMatchNum}
-            studyListId={studyListId}
-            setNewRecord={setFastedTimeRecord}
-            fastestTimeRecord={fastestTimeRecord}
-            RenderGameBtns={RenderGameBtns}
-          />
-        </div>
-        <div className="row game-body g-0 p-1">
-          <div className="col" id="words">
-            <h2 className="text-end">Words</h2>
-            <GameWords
-              words={words}
-              matchedWords={matchedWords}
-              activeWord={activeWord}
-              select={setActiveWord}
-            />
+      <div className="container">
+        <div className="card mt-3">
+          <div className="card-header game-title">
+            <h1 className="brand-title text-center">{title}</h1>
           </div>
-
-          <div className="col">
-            <ConnectingLines matchedWords={matchedWords} />
-          </div>
-
-          <div className="col" id="synonyms">
-            <h2 className="text-start">Synonyms</h2>
-            <GameSynonyms
-              matchedSynonyms={matchedSynonyms}
-              activeSynonym={activeSynonym}
-              select={setActiveSynonym}
-              synonyms={synonyms}
+          <div className="row d-flex g-0">
+            <StatsPanel
+              gameEnd={gameEnd}
               gameStart={gameStart}
+              matchCount={matchCount}
+              maxMatchNum={maxMatchNum}
+              studyListId={studyListId}
+              setNewRecord={setFastedTimeRecord}
+              fastestTimeRecord={fastestTimeRecord}
+              RenderGameBtns={RenderGameBtns}
             />
+          </div>
+          <div className="row game-body g-0 p-1">
+            <div className="col" id="words">
+              <h2 className="text-end">Words</h2>
+              <GameWords
+                words={words}
+                matchedWords={matchedWords}
+                activeWord={activeWord}
+                select={setActiveWord}
+              />
+            </div>
+
+            <div className="col">
+              <ConnectingLines matchedWords={matchedWords} />
+            </div>
+
+            <div className="col" id="synonyms">
+              <h2 className="text-start">Synonyms</h2>
+              <GameSynonyms
+                matchedSynonyms={matchedSynonyms}
+                activeSynonym={activeSynonym}
+                select={setActiveSynonym}
+                synonyms={synonyms}
+                gameStart={gameStart}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ code {
 }
 
 .btn-play {
-  background-color: #ddf269;
+  background-color: #5a5756;
   font-weight: 500;
 }
 .btn-new {
@@ -28,6 +28,7 @@ code {
 .bi-x {
   font-size: 28px;
 }
+
 .word-btn {
   background-color: #d6fdff;
   font-size: 20px;
