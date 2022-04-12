@@ -54,7 +54,6 @@ const GameForm = ({ user, setError }) => {
 
   return (
     <StyledGameForm>
-      <h2>Play now!</h2>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -62,7 +61,7 @@ const GameForm = ({ user, setError }) => {
         }}
       >
         <label htmlFor="studyList">
-          Chose a list:
+          Chose list:
           <select
             id="studyList"
             onChange={(event) => setStudyListId(event.target.value)}

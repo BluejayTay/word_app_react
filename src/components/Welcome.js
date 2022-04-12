@@ -12,6 +12,7 @@ const StyledWelcome = styled.div`
 
 const Welcome = ({ user }) => {
   const [error, setError] = useState("");
+  const [listsAreRequested, setListsAreRequested] = useState(false);
 
   return (
     <div>
@@ -24,8 +25,21 @@ const Welcome = ({ user }) => {
             </h1>
 
             <div className="text-center mt-5">
-              <GameForm user={user} error={error} setError={setError} />
+              {listsAreRequested ? null : (
+                <button
+                  className="btn btn-primary btn-large"
+                  onClick={() => {
+                    setListsAreRequested(true);
+                  }}
+                >
+                  Play now!
+                </button>
+              )}
+              {listsAreRequested ? (
+                <GameForm user={user} error={error} setError={setError} />
+              ) : null}
             </div>
+
             <div className="text-center mt-4">
               <Link to={`/study_lists/new`} className="btn btn-new">
                 Make a new word list
