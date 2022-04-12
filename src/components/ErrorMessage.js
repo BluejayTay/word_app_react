@@ -1,21 +1,34 @@
+import styled from "styled-components";
+
+const StyledError = styled.div`
+  background-color: #f0bce1;
+  font-size: 18px;
+  font-weight: 400;
+
+  .dismiss {
+    background-color: #f561cb;
+  }
+`;
+
 const ErrorMessage = ({ error, setError }) => {
   if (error) {
     return (
-      <div
-        id="error"
-        className="d-flex justify-content-center align-items-center alert p-1"
-        role="alert"
-      >
-        <div>{error}</div>
-        <button
-          className="btn dismiss py-0 ms-1"
-          onClick={() => {
-            setError("");
-          }}
+      <StyledError>
+        <div
+          className="d-flex justify-content-center align-items-center alert p-1"
+          role="alert"
         >
-          <i className="bi bi-x p-0"></i>
-        </button>
-      </div>
+          <div>{error}</div>
+          <button
+            className="btn dismiss py-0 ms-1"
+            onClick={() => {
+              setError("");
+            }}
+          >
+            <i className="bi bi-x p-0"></i>
+          </button>
+        </div>
+      </StyledError>
     );
   } else return null;
 };
