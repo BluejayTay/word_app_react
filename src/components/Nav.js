@@ -3,16 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
-  @media only screen and (max-width: 450px) {
-    .navbar-brand {
-      font-size: 26px;
-    }
-    .btn-login,
-    .btn-logout,
-    .bi-house-fill {
-      font-size: 14px;
-    }
-  }
   .navbar-brand {
     font-family: "Rampart One", sans-serif;
     font-size: 32px;
@@ -49,6 +39,16 @@ const StyledNav = styled.nav`
   }
   .bi-house-fill {
     font-size: 20px;
+  }
+  @media screen and (max-width: 450px) {
+    .navbar-brand {
+      font-size: 26px;
+    }
+    .btn-login,
+    .btn-logout,
+    .bi-house-fill {
+      font-size: 14px;
+    }
   }
 `;
 

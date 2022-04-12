@@ -8,17 +8,6 @@ import StatsPanel from "./StatsPanel";
 import GameWords from "./GameWords";
 
 const StyledGame = styled.div`
-  @media only screen and (max-width: 450px) {
-    .brand-title {
-      font-size: 28px;
-    }
-    .record-display,
-    .timer-display,
-    .match-display,
-    .message-display {
-      fontsize: 12px;
-    }
-  }
   .game-start-btn {
     background-color: #d1ed31;
   }
@@ -47,6 +36,17 @@ const StyledGame = styled.div`
   }
   .game-body {
     background-color: #fcfdf1;
+  }
+  @media screen and (max-width: 450px) {
+    .brand-title {
+      font-size: 32px;
+    }
+    .record-display,
+    .timer-display,
+    .match-display,
+    .message-display {
+      fontsize: 12px;
+    }
   }
 `;
 
