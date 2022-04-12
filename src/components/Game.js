@@ -22,7 +22,6 @@ const StyledGame = styled.div`
     background-color: #fcffee;
     fontsize: 18px;
   }
-
   .record-display,
   .timer-display,
   .match-display {
@@ -36,6 +35,19 @@ const StyledGame = styled.div`
   }
   .game-body {
     background-color: #fcfdf1;
+  }
+  .word-btn {
+    background-color: #d6fdff;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .word-btn:hover,
+  .selected {
+    background-color: #ff501f;
+    color: #d6fdff;
+  }
+  .btn:disabled {
+    background-color: #ff621f;
   }
   @media screen and (max-width: 450px) {
     .brand-title {
