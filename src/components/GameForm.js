@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../apiRoot";
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledGameForm = styled.div`
+  .brand-style {
+    font-family: "Rampart One", sans-serif;
+  }
+`;
 
 const GameForm = ({ user, setError }) => {
   const [studyLists, setStudyLists] = useState([]);
@@ -46,7 +53,8 @@ const GameForm = ({ user, setError }) => {
   }
 
   return (
-    <div>
+    <StyledGameForm>
+      <h2>Play now!</h2>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -70,7 +78,7 @@ const GameForm = ({ user, setError }) => {
         </label>
         <button className="btn btn-play">Play</button>
       </form>
-    </div>
+    </StyledGameForm>
   );
 };
 
