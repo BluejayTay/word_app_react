@@ -1,17 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { API_ROOT } from "../apiRoot";
 
-const Timer = ({
-  studyListId,
-  gameStart,
-  gameEnd,
-  fastestTimeRecord,
-  loadSavedScore,
-}) => {
-  const [seconds, setSeconds] = useState(0);
+const Timer = ({ gameStart, gameEnd, seconds, setSeconds }) => {
   const [isActive, setIsActive] = useState(false);
-  const [saveScoreStatus, setSaveScoreStatus] = useState("");
 
   useEffect(() => {
     if (gameStart == true && gameEnd == false) setIsActive(true);
@@ -19,8 +9,8 @@ const Timer = ({
     else if (gameEnd == false && gameStart == false) {
       setIsActive(false);
       setSeconds(0);
-      setSaveScoreStatus("");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameStart, gameEnd]);
 
   useEffect(() => {
@@ -31,37 +21,13 @@ const Timer = ({
       }, 1000);
     }
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive, seconds]);
 
-  useEffect(() => {
-    if (gameEnd == true)
-      if (fastestTimeRecord == null || seconds < fastestTimeRecord)
-        handleSaveTime();
-
-    async function handleSaveTime() {
-      setSaveScoreStatus("saving");
-      axios.put(`${API_ROOT}api/study_lists/${studyListId}`, {
-        study_list: { high_score: seconds },
-      });
-      setSaveScoreStatus("New record saved!");
-      loadSavedScore(seconds);
-    }
-    return [saveScoreStatus];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameEnd]);
-
   return (
-    <div
-      style={{
-        background: "lavender",
-        width: "200px",
-        height: "100px",
-        fontsize: "18px",
-      }}
-    >
-      <div>Timer:</div>
-      <div style={{ fontSize: "32px" }}>{seconds}s</div>
-      <div style={{ fontSize: "24px" }}>{saveScoreStatus}</div>
+    <div className="col timer-display m-1 p-1">
+      Timer:
+      <h2 className="text-center">{seconds}s</h2>
     </div>
   );
 };
