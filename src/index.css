@@ -1,4 +1,5 @@
 body {
+  background-image: url("./legal-pad.png");
   margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -6,7 +7,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #100804;
-  background-color: #e6fdff;
+  min-height: 100vh;
+  background-size: cover;
   font-weight: 400;
 }
 
@@ -14,85 +16,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-/* button > * {
-  pointer-events: none;
-} */
-.navbar-brand {
-  font-family: "Rampart One", sans-serif;
-  font-size: 36px;
-  color: #ee500c;
-}
-a:hover.navbar-brand {
-  text-decoration: none;
-  color: #ff621f;
-}
-.navbar {
-  font-family: "Inter", sans-serif;
-  background-color: #fcfdf1;
-}
-.welcome-brand {
-  font-family: "Rampart One", sans-serif;
-  color: #ff621f;
-}
-.brand-style {
-  font-family: "Rampart One", sans-serif;
-}
-.btn-login,
-.btn-login:hover {
-  background-color: #e7fb9d;
-  color: #ff621f;
-  font-weight: 600;
-  font-size: 22px;
-  text-decoration: none;
-}
-.btn-logout,
-.btn-logout:hover {
-  background-color: #ff621f;
-  color: #e7fb9d;
-  font-weight: 600;
-  font-size: 22px;
-  text-decoration: none;
-}
-.btn-home,
-.btn-home:hover {
-  background-color: #8ae7f5;
-  color: #ff621f;
-  text-decoration: none;
-}
+
 .btn-play {
   background-color: #ddf269;
   font-weight: 500;
 }
 .btn-new {
-  background-color: #8ae7f5;
+  background-color: #e4fbff;
   font-weight: 500;
-}
-.bi-house-fill {
-  font-size: 22px;
 }
 .bi-x {
   font-size: 28px;
 }
-#error {
-  background-color: #f0bce1;
-  font-size: 18px;
-  font-weight: 400;
-}
-.dismiss {
-  background-color: #f561cb;
-}
 .word-btn {
-  background-color: #8ae7f5;
+  background-color: #d6fdff;
+  font-size: 20px;
+  font-weight:500;
 }
-.word-btn:hover {
-  background-color: #ddf269;
-}
-.synonym-btn {
-  background-color: #8ae7f5;
-}
-.synonym-btn:hover {
-  background-color: #ddf269;
+.word-btn:hover, .selected {
+  background-color: #ff501f;
+  color:#d6fdff;
 }
 .btn:focus {
   box-shadow: none;
+}
+.btn:disabled {
+  background-color: #ff621f;
 }
