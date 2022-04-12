@@ -13,18 +13,19 @@ const Synonym = ({ synonym, select, activeSynonym, matchedSynonyms }) => {
   }, [matchedSynonyms]);
 
   return (
-    <div id={`syn${matchIndex}`}>
+    <div>
       <button
+        id={`syn${matchIndex}`}
         disabled={isDisabled}
         onClick={() => {
           select(matchIndex);
         }}
-        className="btn synonym-btn"
-        style={{
-          backgroundColor: activeSynonym == matchIndex ? "#ddf269" : "",
-        }}
+        className={
+          activeSynonym == matchIndex
+            ? "btn selected word-btn my-1"
+            : "btn word-btn my-1"
+        }
       >
-        {" "}
         {name}({matchIndex})
       </button>
     </div>
