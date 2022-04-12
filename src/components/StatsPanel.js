@@ -19,13 +19,13 @@ const StatsPanel = ({
   const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
-    if (gameEnd == true)
-      if (!fastestTimeRecord || seconds < fastestTimeRecord) {
-        handleSaveTime();
-      } else
-        setStatusMessage(
-          `${maxMatchNum} words matched in ${seconds}s. Reset to play again!`
-        );
+    if (gameEnd == true) {
+      (!fastestTimeRecord && seconds > 0) || seconds < fastestTimeRecord
+        ? handleSaveTime()
+        : setStatusMessage(
+            `${maxMatchNum} words matched in ${seconds}s. Reset to play again!`
+          );
+    }
 
     async function handleSaveTime() {
       setStatusMessage("Saving new record...");
