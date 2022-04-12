@@ -9,8 +9,11 @@ const ConnectingLines = ({ matchedWords }) => {
             <Xarrow
               start={`word${matchIndex}`}
               end={`syn${matchIndex}`}
-              curveness={0.2}
+              startAnchor="right"
+              endAnchor="left"
+              curveness={0.3}
               showHead={false}
+              color={"#ff621f"}
             />
           </div>
         ))}
