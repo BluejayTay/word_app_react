@@ -1,10 +1,10 @@
 const MatchCountDisplay = ({ matchCount, maxMatchNum }) => {
   return (
-    <div id="scorebox" style={{ background: "yellow" }}>
-      Words matched:
-      <div style={{ fontSize: "32px" }}>
+    <div className="col match-display m-1 p-1">
+      Matches:
+      <h2 className="text-center">
         {matchCount}/{maxMatchNum}
-      </div>
+      </h2>
     </div>
   );
 };
