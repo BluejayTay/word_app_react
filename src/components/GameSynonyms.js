@@ -19,11 +19,11 @@ const GameSynonyms = ({
     );
   }, [gameStart, synonyms]);
 
-  if (gameStart == true)
+  if (gameStart)
     return (
       <div>
         {shuffledSynonyms.map((synonym) => (
-          <div key={synonym.name}>
+          <div key={synonym.name} className="d-flex justify-content-start">
             <Synonym
               matchedSynonyms={matchedSynonyms}
               synonym={synonym}
