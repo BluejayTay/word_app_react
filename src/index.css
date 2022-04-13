@@ -35,7 +35,7 @@ code {
   font-family: "Rampart One", sans-serif;
 }
 
-@media(hover: hover) and (pointer: fine) {
+@media(hover: none) {
   .btn-play:hover {
     box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
     color: #e24216;
