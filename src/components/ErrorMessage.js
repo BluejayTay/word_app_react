@@ -8,6 +8,15 @@ const StyledError = styled.div`
   .dismiss {
     background-color: #f561cb;
   }
+  .bi-x {
+    font-size: 28px;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 12px;
+    .bi-x {
+      font-size: 20px;
+    }
+  }
 `;
 
 const ErrorMessage = ({ error, setError }) => {
