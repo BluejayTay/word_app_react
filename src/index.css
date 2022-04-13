@@ -26,7 +26,7 @@ code {
   border-radius: 5px; 
   background:#d1ed31;
 }
-.btn-play:hover {
+.btn-play:hover, .btn-play:active {
   box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
   color: #e24216;
 }
@@ -51,7 +51,7 @@ code {
   border-radius: 5px;
 }
 
-.glow-btn:hover::before {
+.glow-btn:hover::before, .glow-btn:active::before{
   opacity: 1;
 }
 
