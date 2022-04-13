@@ -16,9 +16,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.bi-x {
-  font-size: 28px;
-}
 .btn:focus {
   box-shadow: none;
 }
+
+.btn-play {
+  position: relative;
+  z-index: 0;
+  border-radius: 5px; 
+  background:#d1ed31;
+}
+.btn-play:hover {
+  box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
+  color: #e24216;
+}
+.glow-btn {
+  position: relative;
+  z-index: 0;
+  border-radius: 5px; 
+}
+.glow-btn::before {
+  position: absolute;
+  content: "";
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  left: -2px;
+  top: -2px;
+  background: #e95025;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.glow-btn:hover::before {
+  opacity: 1;
+}
+
+.glow-btn::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 5px;
+  background: inherit;
+}
+
+.brand-style {
+  font-family: "Rampart One", sans-serif;
+}
+

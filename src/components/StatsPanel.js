@@ -47,7 +47,7 @@ const StatsPanel = ({
 
   return (
     <div className="row game-panel g-0">
-      <div className="col-md-6 d-flex p-2 ">
+      <div className="col-md-6 d-flex left-panel">
         <RecordDisplay fastestTimeRecord={fastestTimeRecord} />
         <Timer
           seconds={seconds}
@@ -57,12 +57,12 @@ const StatsPanel = ({
         />
         <MatchCountDisplay matchCount={matchCount} maxMatchNum={maxMatchNum} />
       </div>
-      <div className="col d-flex p-3">
-        <div className="col d-flex message-display">
+      <div className="col d-flex right-panel">
+        <div className="col d-flex p-2">
           <div className="text-center m-auto">{statusMessage}</div>
-        </div>
-        <div className="my-auto mx-2">
-          <div className="text-center">{RenderGameBtns()}</div>
+          <div className="text-center my-auto me-2 align-self-end">
+            {RenderGameBtns()}
+          </div>
         </div>
       </div>
     </div>

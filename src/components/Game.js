@@ -8,56 +8,81 @@ import StatsPanel from "./StatsPanel";
 import GameWords from "./GameWords";
 
 const StyledGame = styled.div`
-  .game-start-btn {
-    background-color: #d1ed31;
-  }
   .brand-title {
     font-family: "Rampart One", sans-serif;
     font-size: 48px;
   }
   .game-panel {
     background-color: #100804;
+    border-top: 2px solid #100804;
+    border-bottom: 2px solid #100804;
   }
-  .message-display {
+  .right-panel {
     background-color: #fcffee;
     fontsize: 18px;
+  }
+  .left-panel {
+    border-right: 2px solid #100804;
   }
   .record-display,
   .timer-display,
   .match-display {
-    background-color: #3d3a39;
-    color: #d6fdff;
+    background-color: #fcffee;
     fontsize: 18px;
-    border: 1px solid #d6fdff;
+  }
+  .record-display,
+  .timer-display {
+    border-right: 2px solid #100804;
+  }
+  .game-card {
+    border: 1px solid #100804;
   }
   .game-title {
     background-color: #e4fbff;
   }
   .game-body {
-    background-color: #fcfdf1;
+    background-color: #aadeee;
   }
   .word-btn {
-    background-color: #d6fdff;
+    background-color: #eefeff;
     font-size: 20px;
     font-weight: 500;
   }
   .word-btn:hover,
   .selected {
     background-color: #ff501f;
-    color: #d6fdff;
+    color: #eefeff;
   }
   .btn:disabled {
     background-color: #ff621f;
   }
   @media screen and (max-width: 450px) {
     .brand-title {
-      font-size: 32px;
+      font-size: 30px;
     }
     .record-display,
     .timer-display,
     .match-display,
     .message-display {
-      fontsize: 12px;
+      fontsize: 14px;
+    }
+    .word-btn {
+      font-size: 14px;
+    }
+    .h2 {
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .left-panel {
+      border-right: 0px;
+      border-bottom: 2px solid #100804;
+    }
+    .record-display,
+    .timer-display,
+    .match-display {
+      display: flex;
+      align-items: center;
     }
   }
 `;
@@ -130,7 +155,7 @@ const Game = (props) => {
     if (!gameStart && !gameEnd)
       return (
         <button
-          className="btn game-start-btn btn-lg m-1"
+          className="btn btn-play btn-lg"
           onClick={() => setGameStart(true)}
         >
           Start
@@ -138,7 +163,7 @@ const Game = (props) => {
       );
     else
       return (
-        <button className="btn game-start-btn btn-lg" onClick={handleResetGame}>
+        <button className="btn btn-play btn-lg" onClick={handleResetGame}>
           Reset
         </button>
       );
@@ -147,7 +172,7 @@ const Game = (props) => {
   return (
     <StyledGame>
       <div className="container">
-        <div className="card mt-3">
+        <div className="card game-card shadow-lg mt-3">
           <div className="card-header game-title">
             <h1 className="brand-title text-center">{title}</h1>
           </div>
@@ -163,8 +188,9 @@ const Game = (props) => {
               RenderGameBtns={RenderGameBtns}
             />
           </div>
-          <div className="row game-body g-0 p-1">
-            <div className="col" id="words">
+
+          <div className="row game-body g-0 p-1 rounded-bottom">
+            <div className="col-5" id="words">
               <h2 className="text-end">Words</h2>
               <GameWords
                 words={words}
@@ -174,11 +200,11 @@ const Game = (props) => {
               />
             </div>
 
-            <div className="col">
+            <div className="col-2">
               <ConnectingLines matchedWords={matchedWords} />
             </div>
 
-            <div className="col" id="synonyms">
+            <div className="col-5" id="synonyms">
               <h2 className="text-start">Synonyms</h2>
               <GameSynonyms
                 matchedSynonyms={matchedSynonyms}

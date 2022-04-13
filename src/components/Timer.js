@@ -25,9 +25,9 @@ const Timer = ({ gameStart, gameEnd, seconds, setSeconds }) => {
   }, [isActive, seconds]);
 
   return (
-    <div className="col timer-display m-1 p-1">
-      Timer:
-      <h2 className="text-center">{seconds}s</h2>
+    <div className="col timer-display m-0 p-1">
+      <div>Timer:</div>
+      <div className="h2 text-center m-auto ms-2">{seconds}s</div>
     </div>
   );
 };

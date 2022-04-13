@@ -21,8 +21,8 @@ const Word = ({ activeWord, select, word, matchedWords }) => {
         }}
         className={
           activeWord == matchIndex
-            ? "btn selected word-btn my-1"
-            : "btn word-btn my-1"
+            ? "btn selected word-btn glow-btn my-1"
+            : "btn word-btn glow-btn my-1"
         }
       >
         {name}

@@ -10,9 +10,9 @@ const RecordDisplay = ({ fastestTimeRecord }) => {
   };
 
   return (
-    <div className="col record-display m-1 p-1">
-      Record:
-      <h2 className="text-center">{showRecord()}</h2>
+    <div className="col record-display m-0 p-1">
+      <div>Record:</div>
+      <div className="h2 text-center m-auto ms-2">{showRecord()}</div>
     </div>
   );
 };
