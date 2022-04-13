@@ -28,20 +28,11 @@ const StyledNav = styled.nav`
     color: #ff621f;
     text-decoration: none;
   }
-  .btn-home:hover {
-    background-color: #ff621f;
-    color: #8ae7f5;
-    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
-  }
+
   .bi-house-fill {
     font-size: 20px;
   }
-  .btn-login:hover,
-  .btn-logout:hover {
-    background-color: #e7fb9d;
-    color: #ff621f;
-    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
-  }
+
   @media screen and (max-width: 450px) {
     .navbar-brand {
       font-size: 26px;
