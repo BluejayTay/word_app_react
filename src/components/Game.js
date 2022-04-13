@@ -48,7 +48,10 @@ const StyledGame = styled.div`
     font-size: 20px;
     font-weight: 500;
   }
-
+  .selected {
+    background-color: #ff501f;
+    color: #eefeff;
+  }
   .btn:disabled {
     background-color: #ff621f;
   }
@@ -79,6 +82,13 @@ const StyledGame = styled.div`
     .match-display {
       display: flex;
       align-items: center;
+    }
+  }
+  @media screen and (min-width: 500px) {
+    .word-btn:hover {
+      background-color: #ff501f;
+      color: #eefeff;
+      box-shadow: 4px 4px 5px 2px rgba(231, 85, 12, 0.482);
     }
   }
 `;

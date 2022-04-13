@@ -43,6 +43,19 @@ const StyledNav = styled.nav`
       font-size: 14px;
     }
   }
+  @media screen and (min-width: 500px) {
+    .btn-login:hover,
+    .btn-logout:hover {
+      background-color: #e7fb9d;
+      color: #ff621f;
+      box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
+    }
+    .btn-home:hover {
+      background-color: #ff621f;
+      color: #8ae7f5;
+      box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
+    }
+  }
 `;
 
 const Nav = ({ setUser }) => {
