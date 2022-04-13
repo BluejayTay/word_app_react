@@ -10,7 +10,6 @@ const StyledNav = styled.nav`
   }
   a:hover.navbar-brand {
     text-decoration: none;
-    color: #ff621f;
   }
   .navbar {
     font-family: "Inter", sans-serif;
@@ -24,7 +23,8 @@ const StyledNav = styled.nav`
     font-size: 20px;
     text-decoration: none;
   }
-  .btn-login:hover {
+  .btn-login:hover,
+  .btn-logout:hover {
     background-color: #e7fb9d;
     color: #ff621f;
   }
@@ -36,9 +36,14 @@ const StyledNav = styled.nav`
   .btn-home:hover {
     background-color: #ff621f;
     color: #8ae7f5;
+    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
   }
   .bi-house-fill {
     font-size: 20px;
+  }
+  .btn-login:hover,
+  .btn-logout:hover {
+    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
   }
   @media screen and (max-width: 450px) {
     .navbar-brand {
