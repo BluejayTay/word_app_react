@@ -49,7 +49,6 @@ const StyledGame = styled.div`
     font-weight: 500;
   }
   .word-btn:hover,
-  .word-btn:active,
   .selected {
     background-color: #ff501f;
     color: #eefeff;

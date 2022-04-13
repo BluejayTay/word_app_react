@@ -26,11 +26,31 @@ code {
   border-radius: 5px; 
   background:#d1ed31;
 }
-.btn-play:hover, .btn-play:active {
+.btn-play:hover {
   box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
   color: #e24216;
 }
 
 .brand-style {
   font-family: "Rampart One", sans-serif;
+}
+
+@media(hover: hover) and (pointer: fine) {
+  .btn-play:hover {
+    box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
+    color: #e24216;
+  } .btn-login:hover,
+  .btn-logout:hover {
+    background-color: #e7fb9d;
+    color: #ff621f;
+    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
+  }.btn-home:hover {
+    background-color: #ff621f;
+    color: #8ae7f5;
+    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
+  }.word-btn:hover,
+  .selected {
+    background-color: #ff501f;
+    color: #eefeff;
+  }
 }

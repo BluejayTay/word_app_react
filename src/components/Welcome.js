@@ -14,7 +14,7 @@ const StyledWelcome = styled.div`
     border-radius: 5px; 
     background-color: #8ae7f5;
   }
-  .btn-new:hover, .btn-new:active {
+  .btn-new:hover {
     box-shadow: 4px 4px 5px 2px rgba(0, 184, 0, 0.4);
     color: #e24216;
 `;
