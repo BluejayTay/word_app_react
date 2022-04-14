@@ -71,13 +71,13 @@ const Nav = ({ setUser }) => {
             setUser({});
           }}
         >
-          Log out
+          Log Out
         </Link>
       );
     else
       return (
         <Link className="btn btn-login" to={"/users/login"}>
-          Log in/Sign up
+          Log In/Sign Up
         </Link>
       );
   };
