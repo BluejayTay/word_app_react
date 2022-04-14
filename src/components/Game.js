@@ -157,11 +157,11 @@ const Game = (props) => {
     requestGame();
   };
 
-  const RenderGameBtns = () => {
+  const renderGameBtns = () => {
     if (!gameStart && !gameEnd)
       return (
         <button
-          className="btn btn-play btn-lg"
+          className="btn btn-green btn-lg"
           onClick={() => setGameStart(true)}
         >
           Start
@@ -169,7 +169,7 @@ const Game = (props) => {
       );
     else
       return (
-        <button className="btn btn-play btn-lg" onClick={handleResetGame}>
+        <button className="btn btn-green btn-lg" onClick={handleResetGame}>
           Reset
         </button>
       );
@@ -191,7 +191,7 @@ const Game = (props) => {
               studyListId={studyListId}
               setNewRecord={setFastedTimeRecord}
               fastestTimeRecord={fastestTimeRecord}
-              RenderGameBtns={RenderGameBtns}
+              RenderGameBtns={renderGameBtns}
             />
           </div>
 

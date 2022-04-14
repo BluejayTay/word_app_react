@@ -20,22 +20,17 @@ code {
   box-shadow: none;
 }
 
-.btn-play {
-  position: relative;
-  z-index: 0;
-  border-radius: 5px; 
-  background:#d1ed31;
+.btn-green { 
+  background-color:#e4f967;
 }
-
 
 .brand-style {
   font-family: "Rampart One", sans-serif;
 }
 
 @media screen and (min-width: 500px) {
-  .btn-play:hover {
+  .btn-green:hover {
     box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
-    color: #e24216;
   } 
   .btn-login:hover,
   .btn-logout:hover {
@@ -48,12 +43,7 @@ code {
     color: #8ae7f5;
     box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
   }
-  .word-btn:hover {
-    background-color: #ff501f;
-    color: #eefeff;
-  }
   .btn-new:hover {
     box-shadow: 4px 4px 5px 2px rgba(0, 184, 0, 0.4);
-    color: #e24216;
   }
 }

@@ -28,7 +28,7 @@ const GameForm = ({ user, setError }) => {
         console.log(response.data);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
   const handleGame = () => {
     if (studyListId) setToGame(true);
@@ -68,7 +68,7 @@ const GameForm = ({ user, setError }) => {
             ))}
           </select>
         </label>
-        <button className="btn btn-play">Play</button>
+        <button className="btn btn-green">Play</button>
       </form>
     </div>
   );
