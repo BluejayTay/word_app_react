@@ -35,27 +35,35 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1 className="brand-style text-center mt-3">Sign Up</h1>
       <form onSubmit={handleSignUp}>
-        <label htmlFor="email">
-          <input
-            placeholder="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label htmlFor="password">
-          <input
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label htmlFor="password confirmation">
-          <input
-            placeholder="password confirmation"
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
-        </label>
-        <button type="submit">Sign Up for WerdNerd!</button>
+        <div className="container d-flex justify-content-center p-0">
+          <div className="row g-0 col-10 col-md-6 col-lg-4">
+            <label htmlFor="email">Email: </label>
+
+            <input
+              placeholder="email"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              placeholder="password"
+              onChange={(event) => setPassword(event.target.value)}
+            />
+
+            <input
+              type="password"
+              placeholder="password confirmation"
+              onChange={(event) => setPasswordConfirmation(event.target.value)}
+            />
+
+            <button className="btn btn-green mt-3" type="submit">
+              Sign Up for <span className="brand-style">WerdNerd</span>!
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );

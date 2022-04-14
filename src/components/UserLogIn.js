@@ -3,6 +3,29 @@ import UserLogInForm from "./UserLogInForm";
 import UserSignUpForm from "./UserSignUpForm";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
+import styled from "styled-components";
+
+const StyledLogin = styled.div`
+  .login-container {
+    background-color: #e6fdff;
+  }
+  .btn-active {
+    background-color: #ff621f;
+    color: #e6fdff;
+    font-weight: 700;
+  }
+  .btn-inactive {
+    background-color: #e6fdff;
+    color: #ff621f;
+    font-weight: 700;
+    border: 1px solid #ff621f;
+  }
+  @media screen and (min-width: 500px) {
+    .btn-inactive:hover {
+      background-color: #aeedf0;
+    }
+  }
+`;
 
 const UserLogIn = ({ setUser }) => {
   const [form, setForm] = useState("login");
@@ -43,24 +66,37 @@ const UserLogIn = ({ setUser }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      <h1>User Sign-up/Log-in</h1>
-      <div>
-        <button
-          onClick={() => {
-            setForm("signup");
-          }}
-        >
-          Sign Up
-        </button>
-        <button
-          onClick={() => {
-            setForm("login");
-          }}
-        >
-          Log in
-        </button>
+      <div className="container d-flex justify-content-center">
+        <StyledLogin>
+          <div className="login-container card p-5 mt-5 justify-content-center">
+            <div className="row g-0 d-flex justify-content-center">
+              <div className="btn-group col-md-8 col-lg-6">
+                <button
+                  className={
+                    form == "login" ? "btn btn-inactive" : "btn btn-active"
+                  }
+                  onClick={() => {
+                    setForm("signup");
+                  }}
+                >
+                  Sign Up
+                </button>
+                <button
+                  className={
+                    form == "signup" ? "btn btn-inactive" : "btn btn-active"
+                  }
+                  onClick={() => {
+                    setForm("login");
+                  }}
+                >
+                  Log In
+                </button>
+              </div>
+            </div>
+            <div>{renderForm()}</div>
+          </div>
+        </StyledLogin>
       </div>
-      <div>{renderForm()}</div>
     </div>
   );
 };

@@ -32,21 +32,31 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
 
   return (
     <div>
-      <h1>Log In</h1>
+      <h1 className="brand-style text-center mt-3">Log In</h1>
       <form onSubmit={handleLogIn}>
-        <label htmlFor="email">
-          <input
-            placeholder="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label htmlFor="password">
-          <input
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Log into WerdNerd!</button>
+        <div className="container d-flex justify-content-center p-0">
+          <div className="row g-0 col-10 col-md-6 col-lg-4">
+            <label htmlFor="email">Email: </label>
+
+            <input
+              placeholder="email"
+              autoComplete="email"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              autoComplete="current-password"
+              placeholder="password"
+              onChange={(event) => setPassword(event.target.value)}
+            />
+
+            <button className="btn btn-green mt-3" type="submit">
+              Log Into <span className="brand-style">WerdNerd!</span>
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
