@@ -46,17 +46,16 @@ const Welcome = ({ user }) => {
             <p className="mb-3">
               <span className="brand-style">WerdNerd</span> puts your
               word-matching skills to the test using Merriam-Webster&apos;s
-              Collegiate® Thesaurus. Each{" "}
-              <span className="brand-style">WerdNerd</span> game pulls
-              randomly-selected synonyms for each word in it&apos;s list so that
-              each time you play, you&apos;re matching different word-synonym
-              pairings. It&apos;s free, easy to play, and you just might learn
-              something!
+              Collegiate® Thesaurus!
             </p>
             <p className="mb-3">
               Don&apos;t take our &quot;werd&quot; for it - Try it yourself with
               one of our original lists below, or sign-up/log-in to create
-              custom ones!
+              custom ones. Each <span className="brand-style">WerdNerd</span>{" "}
+              game pulls randomly-selected synonyms for each word in it&apos;s
+              list so that each time you play, you&apos;re matching different
+              word-synonym pairings. It&apos;s free, easy to play, and you just
+              might learn something!
             </p>
           </div>
         </div>
@@ -92,7 +91,33 @@ const Welcome = ({ user }) => {
         <StyledWelcome>
           <div className="welcome-container card-body rounded-top p-4 mt-5 shadow-lg justify-content-center">
             {renderWelcomePage()}
-
+            <div>
+              <h5>How to play:</h5>
+              <ol>
+                <li>
+                  Select a list to use for your game from the drop-down
+                  selection below.
+                </li>
+                <li>Press the &quot;Play&quot; button to load the game.</li>
+                <li>
+                  Press &quot;Start&quot; to reveal the randomly-selected
+                  synonyms and start the clock!{" "}
+                </li>
+                <li>
+                  Match words to their respective synonyms by selecting the word
+                  on the left and their synonym on the right. A correct match
+                  will be revealed with an orange line connecting them together!
+                </li>
+                <li>
+                  Once you&apos;ve found all the matches, the timer will stop
+                  and save your time if you beat the current record.
+                </li>
+                <li>
+                  Press &quot;Reset&quot; to play another game with that list,
+                  or come back here to select a different list to use.
+                </li>
+              </ol>
+            </div>
             <div className="text-center mt-3">
               <GameForm user={user} error={error} setError={setError} />
             </div>
