@@ -63,7 +63,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
             />
 
             <button className="btn btn-green mt-3" type="submit">
-              Sign Up for <span className="brand-style">WerdNerd</span>!
+              Sign up for <span className="brand-style">WerdNerd</span>!
             </button>
           </div>
         </div>

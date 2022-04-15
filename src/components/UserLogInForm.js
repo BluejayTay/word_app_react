@@ -55,7 +55,7 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
             />
 
             <button className="btn btn-green mt-5" type="submit">
-              Log Into <span className="brand-style">WerdNerd!</span>
+              Log into <span className="brand-style">WerdNerd!</span>
             </button>
           </div>
         </div>

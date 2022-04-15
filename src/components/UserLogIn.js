@@ -69,9 +69,9 @@ const UserLogIn = ({ setUser }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      <div className="mx-5 justify-content-center">
+      <div className="container justify-content-center">
         <StyledLogin>
-          <div className="login-container card p-5 mt-5 justify-content-center">
+          <div className="login-container card p-3 mt-5 justify-content-center">
             <div className="row g-0 d-flex justify-content-center">
               <div className="col-md-8 col-lg-7 btn-group">
                 <button
