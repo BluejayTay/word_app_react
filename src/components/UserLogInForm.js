@@ -32,13 +32,14 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
 
   return (
     <div>
-      <h1 className="brand-style text-center mt-3">Log In</h1>
+      <h1 className="brand-style text-center mt-4">Log In</h1>
       <form onSubmit={handleLogIn}>
         <div className="container d-flex justify-content-center p-0">
-          <div className="row g-0 col-10 col-md-6 col-lg-4">
-            <label htmlFor="email">Email: </label>
+          <div className="form-group row g-0 col-10 col-md-6 mt-3">
+            <label htmlFor="email">Email:</label>
 
             <input
+              className="ps-1 mt-1 mb-2"
               placeholder="email"
               autoComplete="email"
               onChange={(event) => setEmail(event.target.value)}
@@ -46,13 +47,14 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError }) => {
 
             <label htmlFor="password">Password:</label>
             <input
+              className="ps-1 my-1"
               type="password"
               autoComplete="current-password"
               placeholder="password"
               onChange={(event) => setPassword(event.target.value)}
             />
 
-            <button className="btn btn-green mt-3" type="submit">
+            <button className="btn btn-green mt-5" type="submit">
               Log Into <span className="brand-style">WerdNerd!</span>
             </button>
           </div>

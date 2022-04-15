@@ -35,25 +35,28 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
 
   return (
     <div>
-      <h1 className="brand-style text-center mt-3">Sign Up</h1>
+      <h1 className="brand-style text-center mt-4">Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <div className="container d-flex justify-content-center p-0">
-          <div className="row g-0 col-10 col-md-6 col-lg-4">
+          <div className="form-group row g-0 col-10 col-md-6 mt-3">
             <label htmlFor="email">Email: </label>
 
             <input
+              className="ps-1 mt-1 mb-2"
               placeholder="email"
               onChange={(event) => setEmail(event.target.value)}
             />
 
             <label htmlFor="password">Password:</label>
             <input
+              className="ps-1 my-1"
               type="password"
               placeholder="password"
               onChange={(event) => setPassword(event.target.value)}
             />
 
             <input
+              className="ps-1"
               type="password"
               placeholder="password confirmation"
               onChange={(event) => setPasswordConfirmation(event.target.value)}

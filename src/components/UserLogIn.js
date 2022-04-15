@@ -20,6 +20,9 @@ const StyledLogin = styled.div`
     font-weight: 700;
     border: 1px solid #ff621f;
   }
+  label {
+    font-size: 18px;
+  }
   @media screen and (min-width: 500px) {
     .btn-inactive:hover {
       background-color: #aeedf0;
@@ -66,11 +69,11 @@ const UserLogIn = ({ setUser }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      <div className="container d-flex justify-content-center">
+      <div className="mx-5 justify-content-center">
         <StyledLogin>
           <div className="login-container card p-5 mt-5 justify-content-center">
             <div className="row g-0 d-flex justify-content-center">
-              <div className="btn-group col-md-8 col-lg-6">
+              <div className="col-md-8 col-lg-7 btn-group">
                 <button
                   className={
                     form == "login" ? "btn btn-inactive" : "btn btn-active"
@@ -92,8 +95,9 @@ const UserLogIn = ({ setUser }) => {
                   Log In
                 </button>
               </div>
+
+              {renderForm()}
             </div>
-            <div>{renderForm()}</div>
           </div>
         </StyledLogin>
       </div>

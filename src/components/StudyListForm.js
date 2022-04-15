@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { API_ROOT } from "../apiRoot";
 import axios from "axios";
-import WordField from "./WordField";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 import styled from "styled-components";
 
 const StyledStudyListForm = styled.div`
-  background-color: #e6fdff;
+  .new-list-container {
+    background-color: #e6fdff;
+  }
   .brand-style {
     font-family: "Rampart One", sans-serif;
     color: #100804;
   }
   .add-btn {
-    background-color: #e7fb9d;
-    color: #ff621f;
-  }
-  .bi-plus-square-fill {
+    background-color: #ff621f;
+    color: #e4f967;
+    font-size: 20px;
   }
 `;
 
@@ -83,50 +83,63 @@ const StudyListForm = ({ user }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      <div className="container d-flex justify-content-center">
-        <StyledStudyListForm className="col-md-8 card p-5 my-5 justify-content-center">
-          <form onSubmit={handleCreateStudyList}>
-            <h1 className="brand-style text-center mb-4">Make a new list</h1>
-            <div>
-              <label htmlFor="title">Title</label>
-              <input
-                id="title"
-                placeholder="Title"
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <div>
-                <label htmlFor="words">Add Words </label>
+      <div className="container">
+        <StyledStudyListForm>
+          <div className="new-list-container card p-5 my-5 justify-content-center">
+            <h1 className="brand-style text-center mb-4">New List</h1>
+            <form onSubmit={handleCreateStudyList}>
+              <div className="container d-flex justify-content-center">
+                <div className="row g-0 col-10 col-md-6">
+                  <label htmlFor="title">Title</label>
+                  <input
+                    className="ps-1"
+                    id="title"
+                    placeholder="Title"
+                    onChange={(event) => setTitle(event.target.value)}
+                  />
+                  <div className="mx-auto mt-3">
+                    <label htmlFor="words">Words </label>
 
-                {[...Array(wordCount)].map((_, index) => {
-                  return (
-                    <WordField
-                      key={index}
-                      wordIndex={index}
-                      handleWordsHash={handleWordsHash}
-                    />
-                  );
-                })}
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>
-                  {wordCount < 10 ? (
-                    <button
-                      onClick={() => {
-                        setWordCount(wordCount + 1);
-                      }}
-                    >
-                      <i className="bi bi-plus-lg"></i>
-                    </button>
-                  ) : null}
-                </div>
-                <div>
-                  <button onClick={formatWords} type="submit">
-                    submit
+                    <div className="d-flex mb-4">
+                      <div className="col-9">
+                        {[...Array(wordCount)].map((_, index) => {
+                          return (
+                            <input
+                              className="container-fluid ps-1"
+                              key={index}
+                              name={`word${index}`}
+                              placeholder={`word #${index + 1}`}
+                              onChange={handleWordsHash}
+                            />
+                          );
+                        })}
+                      </div>
+                      <div className="col-3 d-flex justify-content-end align-items-start">
+                        {wordCount < 10 ? (
+                          <button
+                            className="btn btn-green"
+                            onClick={() => {
+                              setWordCount(wordCount + 1);
+                            }}
+                          >
+                            <i className="bi bi-plus-lg"></i>
+                          </button>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    className="btn btn-green"
+                    onClick={formatWords}
+                    type="submit"
+                  >
+                    Submit
                   </button>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </StyledStudyListForm>
       </div>
     </div>
