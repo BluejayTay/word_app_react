@@ -104,13 +104,13 @@ const Welcome = ({ user }) => {
                   synonyms and start the clock!{" "}
                 </li>
                 <li>
-                  Match words to their respective synonyms by selecting the word
-                  on the left and their synonym on the right. A correct match
-                  will be revealed with an orange line connecting them together!
+                  Match each word to their synonym by selecting the word on the
+                  left and their synonym on the right. A correct match will be
+                  revealed with an orange line connecting them together!
                 </li>
                 <li>
-                  Once you&apos;ve found all the matches, the timer will stop
-                  and save your time if you beat the current record.
+                  Once you&apos;ve found all the matches, the timer stops and
+                  saves your time if you beat the record.
                 </li>
                 <li>
                   Press &quot;Reset&quot; to play another game with that list,
