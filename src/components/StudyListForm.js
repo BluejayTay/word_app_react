@@ -61,17 +61,17 @@ const StudyListForm = ({ user }) => {
         )
         .then((response) => {
           console.log(response.data);
+          setIsLoading(false);
           setIsListCreated(true);
         })
         .catch((error) => {
-          setIsLoading(false);
           console.log(error);
+          setIsLoading(false);
           setIsReady(false);
           setError(
             "Error: Please make sure to include a unique title and 1-10 valid words and try again."
           );
         });
-      setIsLoading(false);
     }
   };
 
