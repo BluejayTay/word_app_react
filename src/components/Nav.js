@@ -15,42 +15,23 @@ const StyledNav = styled.nav`
     font-family: "Inter", sans-serif;
     background-color: #fcfdf1;
   }
-  .btn-login,
-  .btn-logout {
-    background-color: #ff621f;
-    color: #e7fb9d;
-    font-weight: 600;
-    font-size: 20px;
-    text-decoration: none;
-  }
-  .btn-home {
+  .btn-nav {
     background-color: #8ae7f5;
     color: #ff621f;
+    font-weight: 600;
     text-decoration: none;
-  }
-
-  .bi-house-fill {
-    font-size: 20px;
   }
 
   @media screen and (max-width: 450px) {
     .navbar-brand {
       font-size: 26px;
     }
-    .btn-login,
-    .btn-logout,
-    .bi-house-fill {
+    .btn-nav .bi-house-fill {
       font-size: 14px;
     }
   }
   @media screen and (min-width: 500px) {
-    .btn-login:hover,
-    .btn-logout:hover {
-      background-color: #dcfb6b;
-      color: #ff621f;
-      box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
-    }
-    .btn-home:hover {
+    .btn-nav:hover {
       background-color: #ff621f;
       color: #8ae7f5;
       box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
@@ -64,8 +45,8 @@ const Nav = ({ setUser }) => {
     if (token)
       return (
         <Link
-          to={"#"}
-          className="btn btn-logout"
+          to={"/"}
+          className="btn btn-nav"
           onClick={() => {
             localStorage.clear();
             setUser({});
@@ -76,7 +57,7 @@ const Nav = ({ setUser }) => {
       );
     else
       return (
-        <Link className="btn btn-login" to={"/users/login"}>
+        <Link className="btn btn-nav" to={"/users/login"}>
           Log In/Sign Up
         </Link>
       );
@@ -92,7 +73,7 @@ const Nav = ({ setUser }) => {
           <div className="navbar-nav">
             <ul className="nav d-flex align-items-center">
               <li className="nav-item">
-                <Link to={"/"} className="btn btn-home me-3">
+                <Link to={"/"} className="btn btn-nav me-3">
                   <i className="bi bi-house-fill"></i>
                 </Link>
               </li>
