@@ -10,13 +10,15 @@ const StyledWelcome = styled.div`
     background-color: #e6fdff;
     font-size: 18px;
   }
-  img {
-    width: 100px;
-    height: 100px;
-  }
+  // img {
+  //   width: 100px;
+  //   height: 100px;
+  // }
 
   @media screen and (max-width: 450px) {
-    font-size: 12px;
+    .welcome-container {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -90,7 +92,7 @@ const Welcome = ({ user }) => {
       <ErrorMessage error={error} setError={setError} />
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
-          <div className="welcome-container card p-5 my-5 justify-content-center">
+          <div className="welcome-container card py-4 px-3 my-5 justify-content-center">
             {renderWelcomePage()}
 
             <div className="text-center mt-3">

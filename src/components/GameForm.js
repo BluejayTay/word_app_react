@@ -56,22 +56,25 @@ const GameForm = ({ user, setError }) => {
         }}
       >
         <label htmlFor="studyList"> </label>
+        <div className="d-flex justify-content-center align-items-center">
+          <div>
+            <select
+              id="studyList"
+              defaultValue={defaultOption}
+              onChange={(event) => setStudyListId(event.target.value)}
+              onBlur={(event) => setStudyListId(event.target.value)}
+            >
+              <option disabled>{defaultOption}</option>
+              {studyLists.map((list) => (
+                <option key={list.id} value={list.id}>
+                  {list.title}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <select
-          id="studyList"
-          defaultValue={defaultOption}
-          onChange={(event) => setStudyListId(event.target.value)}
-          onBlur={(event) => setStudyListId(event.target.value)}
-        >
-          <option disabled>{defaultOption}</option>
-          {studyLists.map((list) => (
-            <option key={list.id} value={list.id}>
-              {list.title}
-            </option>
-          ))}
-        </select>
-
-        <button className="btn btn-green ms-1">Play</button>
+          <button className="btn btn-green ms-1">Play</button>
+        </div>
       </form>
     </div>
   );
