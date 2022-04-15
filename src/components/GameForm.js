@@ -55,7 +55,6 @@ const GameForm = ({ user, setError }) => {
           handleGame();
         }}
       >
-        <label htmlFor="studyList"> </label>
         <div className="d-flex justify-content-center align-items-center">
           <div>
             <select
