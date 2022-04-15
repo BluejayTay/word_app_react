@@ -62,7 +62,7 @@ const StatsPanel = ({
       <div className="col d-flex right-panel">
         <div className="col d-flex p-2">
           <div className="text-center m-auto">{statusMessage}</div>
-          <div className="text-center my-auto me-2 align-self-end">
+          <div className="text-center my-auto mx-2 align-self-end">
             {RenderGameBtns()}
           </div>
         </div>
