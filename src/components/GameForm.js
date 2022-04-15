@@ -4,6 +4,7 @@ import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
 const GameForm = ({ user, setError }) => {
+  const defaultOption = "Choose a list";
   const [studyLists, setStudyLists] = useState([]);
   const [studyListId, setStudyListId] = useState();
   const [toGame, setToGame] = useState(false);
@@ -31,8 +32,9 @@ const GameForm = ({ user, setError }) => {
   }, [user]);
 
   const handleGame = () => {
-    if (studyListId) setToGame(true);
-    if (!studyListId) setError("Error: Please select a list before submitting");
+    studyListId && studyListId != defaultOption
+      ? setToGame(true)
+      : setError("Error: Please select a list before submitting");
   };
 
   if (toGame && studyListId) {
@@ -53,22 +55,23 @@ const GameForm = ({ user, setError }) => {
           handleGame();
         }}
       >
-        <label htmlFor="studyList">
-          Chose list:
-          <select
-            id="studyList"
-            onChange={(event) => setStudyListId(event.target.value)}
-            onBlur={(event) => setStudyListId(event.target.value)}
-          >
-            <option />
-            {studyLists.map((List) => (
-              <option key={List.id} value={List.id}>
-                {List.title}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button className="btn btn-green">Play</button>
+        <label htmlFor="studyList"> </label>
+
+        <select
+          id="studyList"
+          defaultValue={defaultOption}
+          onChange={(event) => setStudyListId(event.target.value)}
+          onBlur={(event) => setStudyListId(event.target.value)}
+        >
+          <option disabled>{defaultOption}</option>
+          {studyLists.map((list) => (
+            <option key={list.id} value={list.id}>
+              {list.title}
+            </option>
+          ))}
+        </select>
+
+        <button className="btn btn-green ms-1">Play</button>
       </form>
     </div>
   );
