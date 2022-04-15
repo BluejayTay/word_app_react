@@ -3,6 +3,7 @@ import UserLogInForm from "./UserLogInForm";
 import UserSignUpForm from "./UserSignUpForm";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
+import LoadingDisplay from "./LoadingDisplay";
 import styled from "styled-components";
 
 const StyledLogin = styled.div`
@@ -32,6 +33,7 @@ const StyledLogin = styled.div`
 
 const UserLogIn = ({ setUser }) => {
   const [form, setForm] = useState("login");
+  const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState("");
 
@@ -53,6 +55,7 @@ const UserLogIn = ({ setUser }) => {
             setUser={setUser}
             setIsLoggedIn={setIsLoggedIn}
             setError={setError}
+            setIsLoading={setIsLoading}
           />
         );
       default:
@@ -61,6 +64,7 @@ const UserLogIn = ({ setUser }) => {
             setUser={setUser}
             setIsLoggedIn={setIsLoggedIn}
             setError={setError}
+            setIsLoading={setIsLoading}
           />
         );
     }
@@ -69,6 +73,7 @@ const UserLogIn = ({ setUser }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
+      {isLoading ? <LoadingDisplay /> : null}
       <div className="container justify-content-center">
         <StyledLogin>
           <div className="login-container card p-4 mt-5 shadow-lg justify-content-center">

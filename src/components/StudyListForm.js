@@ -3,6 +3,7 @@ import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
+import LoadingDisplay from "./LoadingDisplay";
 import styled from "styled-components";
 
 const StyledStudyListForm = styled.div`
@@ -28,6 +29,7 @@ const StudyListForm = ({ user }) => {
   const [isReady, setIsReady] = useState(false);
   const [isListCreated, setIsListCreated] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleWordsHash = (event) => {
     setWordsHash({ ...wordsHash, [event.target.name]: event.target.value });
@@ -43,6 +45,7 @@ const StudyListForm = ({ user }) => {
 
     const token = localStorage.getItem("auth_token");
     if (isReady) {
+      setIsLoading(true);
       axios
         .post(
           `${API_ROOT}api/study_lists`,
@@ -61,12 +64,14 @@ const StudyListForm = ({ user }) => {
           setIsListCreated(true);
         })
         .catch((error) => {
+          setIsLoading(false);
           console.log(error);
           setIsReady(false);
           setError(
             "Error: Please make sure to include a unique title and 1-10 valid words and try again."
           );
         });
+      setIsLoading(false);
     }
   };
 
@@ -83,6 +88,7 @@ const StudyListForm = ({ user }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
+      {isLoading ? <LoadingDisplay /> : null}
       <div className="container justify-content-center">
         <StyledStudyListForm>
           <div className="new-list-container card p-3 mt-5 justify-content-center">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
-const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
+const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -10,6 +10,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
   const handleSignUp = (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
     axios
       .post(`${API_ROOT}api/users`, {
         user: {
@@ -26,11 +27,13 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
         console.log(response.data.user);
       })
       .catch((error) => {
+        setIsLoading(false);
         console.log(error);
         setError(
           "Error: Please make sure to include a unique email and valid password. (passwords must be between 6-50 characters and match the password confirmation)"
         );
       });
+    setIsLoading(false);
   };
 
   return (

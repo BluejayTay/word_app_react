@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 import GameForm from "./GameForm";
+import LoadingDisplay from "./LoadingDisplay";
 import MWlogo from "../MWlogo.png";
 import styled from "styled-components";
 
@@ -23,6 +24,7 @@ const StyledWelcome = styled.div`
 
 const Welcome = ({ user }) => {
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const renderWelcomePage = () => {
     const token = localStorage.getItem("auth_token");
@@ -88,13 +90,19 @@ const Welcome = ({ user }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
+      {isLoading ? <LoadingDisplay /> : null}
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
           <div className="welcome-container card-body rounded-top p-4 mt-5 shadow-lg justify-content-center">
             {renderWelcomePage()}
 
             <div className="text-center mt-3">
-              <GameForm user={user} error={error} setError={setError} />
+              <GameForm
+                user={user}
+                error={error}
+                setError={setError}
+                setIsLoading={setIsLoading}
+              />
             </div>
 
             {renderWelcomeLinks()}

@@ -6,6 +6,7 @@ import ConnectingLines from "./ConnectingLines";
 import styled from "styled-components";
 import StatsPanel from "./StatsPanel";
 import GameWords from "./GameWords";
+import LoadingDisplay from "./LoadingDisplay";
 
 const StyledGame = styled.div`
   .brand-title {
@@ -95,6 +96,7 @@ const StyledGame = styled.div`
 
 const Game = (props) => {
   const studyListId = props.match.params.study_list_id;
+  const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [words, setWords] = useState([]);
   const [synonyms, setSynonyms] = useState([]);
@@ -113,6 +115,7 @@ const Game = (props) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function requestGame() {
+    setIsLoading(true);
     axios
       .get(`${API_ROOT}api/study_lists/${studyListId}/new_game`)
       .then((response) => {
@@ -123,6 +126,7 @@ const Game = (props) => {
         setFastedTimeRecord(response.data.study_list.high_score);
         console.log(response.data);
       });
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -177,6 +181,7 @@ const Game = (props) => {
 
   return (
     <StyledGame>
+      {isLoading ? <LoadingDisplay /> : null}
       <div className="container">
         <div className="card game-card shadow-lg mt-5 mb-1">
           <div className="card-header game-title">

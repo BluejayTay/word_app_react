@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 
-const GameForm = ({ user, setError }) => {
+const GameForm = ({ user, setError, setIsLoading }) => {
   const defaultOption = "Choose a list";
   const [studyLists, setStudyLists] = useState([]);
   const [studyListId, setStudyListId] = useState();
@@ -11,6 +11,7 @@ const GameForm = ({ user, setError }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
+    setIsLoading(true);
     if (token)
       axios
         .get(`${API_ROOT}api/study_lists`, {
@@ -28,6 +29,7 @@ const GameForm = ({ user, setError }) => {
         setStudyLists(response.data);
         console.log(response.data);
       });
+    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
