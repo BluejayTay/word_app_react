@@ -71,7 +71,7 @@ const UserLogIn = ({ setUser }) => {
       <ErrorMessage error={error} setError={setError} />
       <div className="container justify-content-center">
         <StyledLogin>
-          <div className="login-container card p-3 mt-5 justify-content-center">
+          <div className="login-container card p-4 mt-5 shadow-lg justify-content-center">
             <div className="row g-0 d-flex justify-content-center">
               <div className="col-md-8 col-lg-7 btn-group">
                 <button

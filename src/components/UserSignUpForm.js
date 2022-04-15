@@ -28,7 +28,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
       .catch((error) => {
         console.log(error);
         setError(
-          "Error: Please make sure the form is complete and password entries match and try agian."
+          "Error: Please make sure to include a unique email and valid password. (passwords must be between 6-50 characters and match the password confirmation)"
         );
       });
   };
@@ -51,7 +51,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError }) => {
             <input
               className="ps-1 my-1"
               type="password"
-              placeholder="password"
+              placeholder="password (between 6-50 characters)"
               onChange={(event) => setPassword(event.target.value)}
             />
 

@@ -64,7 +64,7 @@ const StudyListForm = ({ user }) => {
           console.log(error);
           setIsReady(false);
           setError(
-            "Error: Please make sure to include a title and 1-10 valid words and try again."
+            "Error: Please make sure to include a unique title and 1-10 valid words and try again."
           );
         });
     }
@@ -83,9 +83,9 @@ const StudyListForm = ({ user }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      <div className="container">
+      <div className="container justify-content-center">
         <StyledStudyListForm>
-          <div className="new-list-container card p-5 my-5 justify-content-center">
+          <div className="new-list-container card p-3 mt-5 justify-content-center">
             <h1 className="brand-style text-center mb-4">New List</h1>
             <form onSubmit={handleCreateStudyList}>
               <div className="container d-flex justify-content-center">
