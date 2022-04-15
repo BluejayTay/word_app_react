@@ -41,10 +41,10 @@ const Welcome = ({ user }) => {
     } else {
       return (
         <div>
-          <h1 className="text-center mb-3">
-            Welcome to <span className="h1 brand-style">WerdNerd</span>, fellow
+          <div className="h1 text-center mb-3">
+            Welcome to <span className="brand-style">WerdNerd</span>, fellow
             nerd!
-          </h1>{" "}
+          </div>{" "}
           <div className="text-center">
             <p className="mb-2">
               <span className="brand-style">WerdNerd</span> uses
