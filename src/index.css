@@ -22,11 +22,13 @@ code {
 
 .btn-green { 
   background-color:#e4f967;
+  font-weight: 400;
 }
 
 .brand-style {
   font-family: "Rampart One", sans-serif;
 }
+
 
 @media screen and (min-width: 500px) {
   .btn-green:hover {

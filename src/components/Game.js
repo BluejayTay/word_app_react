@@ -178,7 +178,7 @@ const Game = (props) => {
   return (
     <StyledGame>
       <div className="container">
-        <div className="card game-card shadow-lg mt-3">
+        <div className="card game-card shadow-lg my-3">
           <div className="card-header game-title">
             <h1 className="brand-title text-center">{title}</h1>
           </div>
@@ -195,8 +195,8 @@ const Game = (props) => {
             />
           </div>
 
-          <div className="row game-body g-0 p-1 rounded-bottom">
-            <div className="col-5" id="words">
+          <div className="row game-body g-0 p-2 rounded-bottom">
+            <div className="col-5 pb-4" id="words">
               <h2 className="text-end">Words</h2>
               <GameWords
                 words={words}

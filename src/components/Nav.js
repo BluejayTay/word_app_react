@@ -46,7 +46,7 @@ const StyledNav = styled.nav`
   @media screen and (min-width: 500px) {
     .btn-login:hover,
     .btn-logout:hover {
-      background-color: #e7fb9d;
+      background-color: #dcfb6b;
       color: #ff621f;
       box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
     }

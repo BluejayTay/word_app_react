@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledError = styled.div`
   background-color: #f0bce1;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 
   .dismiss {
