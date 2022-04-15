@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 import GameForm from "./GameForm";
-// import MWlogo from "../MWlogo.png";
+import MWlogo from "../MWlogo.png";
 import styled from "styled-components";
 
 const StyledWelcome = styled.div`
@@ -10,11 +10,10 @@ const StyledWelcome = styled.div`
     background-color: #e6fdff;
     font-size: 18px;
   }
-  // img {
-  //   width: 100px;
-  //   height: 100px;
-  // }
-
+  #footer {
+    background-color: white;
+    font-size: 12px;
+  }
   @media screen and (max-width: 450px) {
     .welcome-container {
       font-size: 12px;
@@ -44,13 +43,12 @@ const Welcome = ({ user }) => {
             nerd!
           </h1>{" "}
           <div className="text-center">
-            {/* <img className="m-0" src={MWlogo} alt="Merriam Webster Logo" /> */}
             <p className="mb-3">
               <span className="brand-style">WerdNerd</span> puts your
-              word-matching skills to the test! Using Merriam-Webster&apos;s
-              Collegiate® Thesaurus, each{" "}
-              <span className="brand-style">WerdNerd</span> game pulls a
-              randomly-selected synonym for each word in it&apos;s list so that
+              word-matching skills to the test using Merriam-Webster&apos;s
+              Collegiate® Thesaurus. Each{" "}
+              <span className="brand-style">WerdNerd</span> game pulls
+              randomly-selected synonyms for each word in it&apos;s list so that
               each time you play, you&apos;re matching different word-synonym
               pairings. It&apos;s free, easy to play, and you just might learn
               something!
@@ -70,7 +68,7 @@ const Welcome = ({ user }) => {
     const token = localStorage.getItem("auth_token");
     if (token) {
       return (
-        <div className="text-center mt-5">
+        <div className="text-center my-5">
           <Link to={`/study_lists/new`} className="btn btn-green">
             Make a new list
           </Link>
@@ -78,7 +76,7 @@ const Welcome = ({ user }) => {
       );
     } else {
       return (
-        <div className="text-center mt-5">
+        <div className="text-center my-5">
           <Link to={`/users/login`} className="btn btn-green">
             Sign up/Log in to make a new list!
           </Link>
@@ -92,7 +90,7 @@ const Welcome = ({ user }) => {
       <ErrorMessage error={error} setError={setError} />
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
-          <div className="welcome-container card py-4 px-3 my-5 justify-content-center">
+          <div className="welcome-container card-body rounded-top p-4 mt-5 shadow-lg justify-content-center">
             {renderWelcomePage()}
 
             <div className="text-center mt-3">
@@ -100,6 +98,13 @@ const Welcome = ({ user }) => {
             </div>
 
             {renderWelcomeLinks()}
+          </div>
+          <div
+            id="footer"
+            className="card-footer shadow-lg p-1 m-0 text-center"
+          >
+            This app uses Merriam-Webster&apos;s Collegiate® Thesaurus
+            <img className="mw-img" src={MWlogo} alt="Merriam Webster Logo" />
           </div>
         </StyledWelcome>
       </div>
