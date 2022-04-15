@@ -12,6 +12,9 @@ const StyledWelcome = styled.div`
     margin-top: 48px;
     padding: 24px;
   }
+  #header {
+    margin-bottom: 16px;
+  }
   #footer {
     background-color: white;
     font-size: 12px;
@@ -22,8 +25,14 @@ const StyledWelcome = styled.div`
       margin-top: 4px;
       padding: 16px;
     }
+    #header {
+      margin-bottom: 10px;
+    }
     .h1 {
       font-size: 20px;
+    }
+    .h5 {
+      font-size: 16px;
     }
   }
 `;
@@ -36,7 +45,7 @@ const Welcome = ({ user }) => {
     if (token) {
       return (
         <div>
-          <h1 className="h1 text-center mb-4">
+          <h1 id="header" className="h1 text-center">
             Welcome back to <span className="h1 brand-style">WerdNerd</span>,{" "}
             {user["email"]}!
           </h1>
@@ -45,10 +54,10 @@ const Welcome = ({ user }) => {
     } else {
       return (
         <div>
-          <div className="h1 text-center mb-3">
-            Welcome to <span className="brand-style">WerdNerd</span>, fellow
+          <h1 id="header" className="h1 text-center">
+            Welcome to <span className="h1 brand-style">WerdNerd</span>, fellow
             nerd!
-          </div>{" "}
+          </h1>{" "}
           <div className="text-center">
             <p className="mb-2">
               <span className="brand-style">WerdNerd</span> uses
@@ -93,10 +102,10 @@ const Welcome = ({ user }) => {
       <ErrorMessage error={error} setError={setError} />
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
-          <div className="welcome-container card-body rounded-top p-4 shadow-lg justify-content-center">
+          <div className="welcome-container card-body rounded-top shadow-lg justify-content-center">
             {renderWelcomePage()}
             <div>
-              <h5>How to play:</h5>
+              <h5 className="h5">How to play:</h5>
               <ol>
                 <li>
                   Select a list to use for your game from the drop-down
