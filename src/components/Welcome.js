@@ -9,6 +9,8 @@ const StyledWelcome = styled.div`
   .welcome-container {
     background-color: #e6fdff;
     font-size: 18px;
+    margin-top: 48px;
+    padding: 24px;
   }
   #footer {
     background-color: white;
@@ -17,6 +19,8 @@ const StyledWelcome = styled.div`
   @media screen and (max-width: 450px) {
     .welcome-container {
       font-size: 12px;
+      margin-top: 4px;
+      padding: 16px;
     }
     .h1 {
       font-size: 20px;
@@ -89,7 +93,7 @@ const Welcome = ({ user }) => {
       <ErrorMessage error={error} setError={setError} />
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
-          <div className="welcome-container card-body rounded-top p-4 mt-5 shadow-lg justify-content-center">
+          <div className="welcome-container card-body rounded-top p-4 shadow-lg justify-content-center">
             {renderWelcomePage()}
             <div>
               <h5>How to play:</h5>
@@ -111,10 +115,6 @@ const Welcome = ({ user }) => {
                 <li>
                   Once you&apos;ve found all the matches, the timer stops and
                   saves your time if you beat the record.
-                </li>
-                <li>
-                  Press &quot;Reset&quot; to play another game with that list,
-                  or come back here to select a different list to use.
                 </li>
               </ol>
             </div>
