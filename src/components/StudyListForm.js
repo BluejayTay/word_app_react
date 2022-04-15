@@ -61,7 +61,6 @@ const StudyListForm = ({ user }) => {
         )
         .then((response) => {
           console.log(response.data);
-          setIsLoading(false);
           setIsListCreated(true);
         })
         .catch((error) => {
