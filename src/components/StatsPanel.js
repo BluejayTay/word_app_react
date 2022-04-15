@@ -41,7 +41,9 @@ const StatsPanel = ({
 
   useEffect(() => {
     gameStart
-      ? setStatusMessage("Game in-progress")
+      ? setStatusMessage(
+          "Make matches by finding the correct word-synonym pairs!"
+        )
       : setStatusMessage("Press start to begin  ->");
   }, [gameStart]);
 
