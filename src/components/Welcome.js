@@ -28,8 +28,7 @@ const Welcome = ({ user }) => {
     if (token) {
       return (
         <div>
-          {" "}
-          <h1 className="text-center">
+          <h1 className="text-center mb-4">
             Welcome back to <span className="h1 brand-style">WerdNerd</span>,{" "}
             {user["email"]}!
           </h1>
@@ -38,13 +37,13 @@ const Welcome = ({ user }) => {
     } else {
       return (
         <div>
-          <h1 className="text-center">
+          <h1 className="text-center mb-3">
             Welcome to <span className="h1 brand-style">WerdNerd</span>, fellow
             nerd!
           </h1>{" "}
           <div className="text-center">
             {/* <img className="m-0" src={MWlogo} alt="Merriam Webster Logo" /> */}
-            <p className="mt-4">
+            <p className="mb-3">
               <span className="brand-style">WerdNerd</span> puts your
               word-matching skills to the test! Using Merriam-Webster&apos;s
               Collegiate® Thesaurus, each{" "}
@@ -54,9 +53,9 @@ const Welcome = ({ user }) => {
               pairings. It&apos;s free, easy to play, and you just might learn
               something!
             </p>
-            <p>
-              Don&apos;t want to take our &quot;werd&quot; for it? Try it out
-              with one of our original lists below, or sign-up/log-in to create
+            <p className="mb-3">
+              Don&apos;t take our &quot;werd&quot; for it - Try it yourself with
+              one of our original lists below, or sign-up/log-in to create
               custom ones!
             </p>
           </div>
@@ -69,15 +68,15 @@ const Welcome = ({ user }) => {
     const token = localStorage.getItem("auth_token");
     if (token) {
       return (
-        <div className="text-center mt-4">
+        <div className="text-center mt-5">
           <Link to={`/study_lists/new`} className="btn btn-green">
-            Make a new word list
+            Make a new list
           </Link>
         </div>
       );
     } else {
       return (
-        <div className="text-center mt-4">
+        <div className="text-center mt-5">
           <Link to={`/users/login`} className="btn btn-green">
             Sign up/Log in to make a new list!
           </Link>
