@@ -32,7 +32,7 @@ const StyledWelcome = styled.div`
       font-size: 20px;
     }
     .h5 {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 `;
@@ -135,9 +135,11 @@ const Welcome = ({ user }) => {
           </div>
           <div
             id="footer"
-            className="card-footer shadow-lg p-1 mb-1 text-center"
+            className="card-footer d-flex shadow-lg p-1 mb-1 text-center justify-content-center align-items-center"
           >
-            This app uses Merriam-Webster&apos;s Collegiate® Thesaurus
+            <div>
+              This app uses Merriam-Webster&apos;s Collegiate® Thesaurus
+            </div>
             <img className="mw-img" src={MWlogo} alt="Merriam Webster Logo" />
           </div>
         </StyledWelcome>
