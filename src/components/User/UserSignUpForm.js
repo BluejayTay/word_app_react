@@ -2,7 +2,7 @@ import { useState } from "react";
 import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 
-const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
+const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -10,7 +10,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
   const handleSignUp = (event) => {
     event.preventDefault();
 
-    setIsLoading(true);
+    setLoading(true);
     axios
       .post(`${API_ROOT}api/users`, {
         user: {
@@ -21,19 +21,17 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
       })
       .then((response) => {
         localStorage.setItem("auth_token", response.data.auth_token);
+        setLoading(false);
         setUser(response.data.user);
         setIsLoggedIn(true);
-        console.log(response.data.auth_token);
-        console.log(response.data.user);
       })
       .catch((error) => {
-        setIsLoading(false);
+        setLoading(false);
         console.log(error);
         setError(
           "Error: Please make sure to include a unique email and valid password. (passwords must be between 6-50 characters and match the password confirmation)"
         );
       });
-    setIsLoading(false);
   };
 
   return (
@@ -47,6 +45,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
             <input
               className="ps-1 mt-1 mb-2"
               placeholder="email"
+              autoComplete="email"
               onChange={(event) => setEmail(event.target.value)}
             />
 
@@ -55,6 +54,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
               className="ps-1 my-1"
               type="password"
               placeholder="password (6-50 characters)"
+              autoComplete="new-password"
               onChange={(event) => setPassword(event.target.value)}
             />
 
@@ -62,6 +62,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
               className="ps-1"
               type="password"
               placeholder="password confirmation"
+              autoComplete="new-password"
               onChange={(event) => setPasswordConfirmation(event.target.value)}
             />
 

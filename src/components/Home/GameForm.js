@@ -56,6 +56,7 @@ const GameForm = ({ user, setError }) => {
 
   return (
     <div>
+      <div>{renderLoadingStatus()}</div>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -64,7 +65,6 @@ const GameForm = ({ user, setError }) => {
       >
         <div className="d-flex justify-content-center align-items-center">
           <div>
-            {renderLoadingStatus()}
             <select
               id="studyList"
               defaultValue={defaultOption}

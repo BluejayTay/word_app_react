@@ -9,6 +9,9 @@ import styled from "styled-components";
 const StyledLogin = styled.div`
   .login-container {
     background-color: #e6fdff;
+    justify-content: enter;
+    padding: 24px;
+    margin-top: 48px;
   }
   .btn-active {
     background-color: #ff621f;
@@ -36,7 +39,7 @@ const StyledLogin = styled.div`
 
 const UserLogIn = ({ setUser }) => {
   const [form, setForm] = useState("login");
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState("");
 
@@ -58,7 +61,7 @@ const UserLogIn = ({ setUser }) => {
             setUser={setUser}
             setIsLoggedIn={setIsLoggedIn}
             setError={setError}
-            setIsLoading={setIsLoading}
+            setLoading={setLoading}
           />
         );
       default:
@@ -67,7 +70,7 @@ const UserLogIn = ({ setUser }) => {
             setUser={setUser}
             setIsLoggedIn={setIsLoggedIn}
             setError={setError}
-            setIsLoading={setIsLoading}
+            setLoading={setLoading}
           />
         );
     }
@@ -76,10 +79,10 @@ const UserLogIn = ({ setUser }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      {isLoading ? <LoadingDisplay /> : null}
+      {loading ? <LoadingDisplay /> : null}
       <div className="container justify-content-center">
         <StyledLogin>
-          <div className="login-container card p-4 mt-5 shadow-lg justify-content-center">
+          <div className="login-container card shadow-lg">
             <div className="row g-0 d-flex justify-content-center">
               <div className="col-md-8 col-lg-7 btn-group">
                 <button

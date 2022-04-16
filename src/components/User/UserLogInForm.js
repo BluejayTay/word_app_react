@@ -2,14 +2,14 @@ import { useState } from "react";
 import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 
-const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
+const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogIn = (event) => {
     event.preventDefault();
 
-    setIsLoading(true);
+    setLoading(true);
     axios
       .post(`${API_ROOT}api/users/login`, {
         user: {
@@ -19,18 +19,17 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
       })
       .then((response) => {
         localStorage.setItem("auth_token", response.data.auth_token);
+        setLoading(false);
         setUser(response.data.user);
-        console.log(response.data);
         setIsLoggedIn(true);
       })
       .catch((error) => {
-        setIsLoading(false);
+        setLoading(false);
         console.log(error);
         setError(
           "Error: Please make sure your email and password are correct and try again."
         );
       });
-    setIsLoading(false);
   };
 
   return (
