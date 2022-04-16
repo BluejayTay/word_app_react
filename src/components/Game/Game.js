@@ -1,127 +1,11 @@
 import { useState, useEffect } from "react";
-import { API_ROOT } from "../apiRoot";
+import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 import GameSynonyms from "./GameSynonyms";
 import ConnectingLines from "./ConnectingLines";
-import styled from "styled-components";
 import StatsPanel from "./StatsPanel";
 import GameWords from "./GameWords";
-
-const StyledGame = styled.div`
-  .brand-title {
-    font-family: "Rampart One", sans-serif;
-    font-size: 48px;
-  }
-  .game-panel {
-    background-color: #100804;
-    border-top: 2px solid #100804;
-    border-bottom: 2px solid #100804;
-  }
-  .right-panel {
-    background-color: #fcffee;
-    font-size: 14px;
-  }
-  .left-panel {
-    border-right: 2px solid #100804;
-  }
-  .record-display,
-  .timer-display,
-  .match-display {
-    background-color: #fcffee;
-    font-size: 18px;
-  }
-  .record-display,
-  .timer-display {
-    border-right: 2px solid #100804;
-  }
-  .game-card {
-    border: 1px solid #100804;
-    margin-top: 48px;
-  }
-  .game-title {
-    background-color: #e4fbff;
-  }
-  .game-body {
-    background-color: #aadeee;
-  }
-  .word-btn {
-    background-color: #eefeff;
-    font-size: 20px;
-    font-weight: 500;
-  }
-  .selected {
-    background-color: #ff501f;
-    color: #eefeff;
-  }
-  .btn:disabled {
-    background-color: #ff621f;
-  }
-  .synonym {
-    justify-content: start;
-    text-align: start;
-    padding-left: 20px;
-  }
-  .word {
-    justify-content: end;
-    text-align: end;
-    padding-right: 20px;
-  }
-
-  @media screen and (max-width: 450px) {
-    .brand-title {
-      font-size: 28px;
-    }
-    .record-display,
-    .timer-display,
-    .match-display {
-      font-size: 14px;
-    }
-    .game-card {
-      margin-top: 4px;
-    }
-    .synonym {
-      padding-left: 10px;
-    }
-    .word {
-      padding-right: 10px;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .game-card {
-      margin-top: 16px;
-    }
-    .h2 {
-      font-size: 20px;
-    }
-    .h3 {
-      font-size: 16px;
-    }
-    .left-panel {
-      border-right: 0px;
-      border-bottom: 2px solid #100804;
-    }
-    .record-display,
-    .timer-display,
-    .match-display {
-      display: flex;
-      align-items: center;
-    }
-
-    .word-btn {
-      font-size: 14px;
-      padding-left: 6px;
-      padding-right: 6px;
-    }
-  }
-  @media screen and (min-width: 500px) {
-    .word-btn:hover {
-      background-color: #ff501f;
-      color: #eefeff;
-      box-shadow: 4px 4px 5px 2px rgba(231, 85, 12, 0.482);
-    }
-  }
-`;
+import StyledGame from "./StyledGame";
 
 const Game = (props) => {
   const studyListId = props.match.params.study_list_id;
@@ -208,9 +92,9 @@ const Game = (props) => {
   return (
     <StyledGame>
       <div className="container">
-        <div className="card game-card shadow-lg mb-1">
+        <div className="card game-card shadow-lg">
           <div className="card-header game-title">
-            <h1 className="brand-title text-center">{title}</h1>
+            <h1 className="brand-title">{title}</h1>
           </div>
           <div className="row d-flex g-0">
             <StatsPanel
@@ -225,8 +109,8 @@ const Game = (props) => {
             />
           </div>
 
-          <div className="row game-body g-0 p-2 rounded-bottom">
-            <div className="col-5 pb-4 word">
+          <div className="row game-body g-0 py-2 rounded-bottom">
+            <div className="col-5 pb-4">
               <h3 className="h2 word">Words</h3>
               <GameWords
                 words={words}
@@ -240,7 +124,7 @@ const Game = (props) => {
               <ConnectingLines matchedWords={matchedWords} />
             </div>
 
-            <div className="col-5 synonym">
+            <div className="col-5">
               <h3 className="h2 synonym">Synonyms</h3>
               <GameSynonyms
                 matchedSynonyms={matchedSynonyms}

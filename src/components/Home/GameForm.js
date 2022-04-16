@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { API_ROOT } from "../apiRoot";
+import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 
 const GameForm = ({ user, setError }) => {

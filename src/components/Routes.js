@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./Nav";
-import Game from "./Game";
-import Welcome from "./Welcome";
-import StudyListForm from "./StudyListForm";
-import UserLogIn from "./UserLogIn";
 import { API_ROOT } from "../apiRoot";
 import axios from "axios";
+import Nav from "./Nav";
+import Game from "./Game/Game";
+import Welcome from "./Home/Welcome";
+import StudyListForm from "./StudyListForm";
+import UserLogIn from "./User/UserLogIn";
 
 const Routes = () => {
   const [user, setUser] = useState({});

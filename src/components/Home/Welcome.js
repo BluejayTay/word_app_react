@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../ErrorMessage";
 import GameForm from "./GameForm";
-import MWlogo from "../MWlogo.png";
+import MWlogo from "../../MWlogo.png";
 import styled from "styled-components";
 
 const StyledWelcome = styled.div`
@@ -11,6 +11,7 @@ const StyledWelcome = styled.div`
     font-size: 18px;
     margin-top: 48px;
     padding: 24px;
+    justify-content: center;
   }
   #header {
     margin-bottom: 16px;
@@ -18,6 +19,15 @@ const StyledWelcome = styled.div`
   #footer {
     background-color: white;
     font-size: 12px;
+    display: flex;
+    margin-bottom: 4px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 50px;
+    height: 50px;
   }
   @media screen and (max-width: 450px) {
     .welcome-container {
@@ -102,7 +112,7 @@ const Welcome = ({ user }) => {
       <ErrorMessage error={error} setError={setError} />
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
-          <div className="welcome-container card-body rounded-top shadow-lg justify-content-center">
+          <div className="welcome-container card-body rounded-top shadow-lg">
             {renderWelcomePage()}
             <div>
               <h5 className="h5">How to play:</h5>
@@ -133,10 +143,7 @@ const Welcome = ({ user }) => {
 
             {renderWelcomeLinks()}
           </div>
-          <div
-            id="footer"
-            className="card-footer d-flex shadow-lg p-1 mb-1 text-center justify-content-center align-items-center"
-          >
+          <div id="footer" className="card-footer shadow-lg p-1">
             <div>
               This app uses Merriam-Webster&apos;s Collegiate® Thesaurus
             </div>

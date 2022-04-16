@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-//import "./Nav.css";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
@@ -7,6 +6,7 @@ const StyledNav = styled.nav`
     font-family: "Rampart One", sans-serif;
     font-size: 32px;
     color: #ee500c;
+    margin: 0px;
   }
   a:hover.navbar-brand {
     text-decoration: none;
@@ -21,13 +21,31 @@ const StyledNav = styled.nav`
     font-weight: 600;
     text-decoration: none;
   }
+  .btn-home {
+    margin-right: 12px;
+  }
 
   @media screen and (max-width: 450px) {
     .navbar-brand {
       font-size: 26px;
     }
-    .btn-nav .bi-house-fill {
+    .btn-nav,
+    .bi-house-fill {
       font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 350px) {
+    .navbar-brand {
+      font-size: 20px;
+    }
+    .btn-nav,
+    .bi-house-fill {
+      font-size: 12px;
+      padding-right: 6px;
+      padding-left: 6px;
+    }
+    .btn-home {
+      margin-right: 4px;
     }
   }
   @media screen and (min-width: 500px) {
@@ -73,7 +91,7 @@ const Nav = ({ setUser }) => {
           <div className="navbar-nav">
             <ul className="nav d-flex align-items-center">
               <li className="nav-item">
-                <Link to={"/"} className="btn btn-nav me-3">
+                <Link to={"/"} className="btn btn-nav btn-home">
                   <i className="bi bi-house-fill"></i>
                 </Link>
               </li>

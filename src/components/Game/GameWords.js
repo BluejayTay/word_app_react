@@ -2,9 +2,9 @@ import Word from "./Word";
 
 const GameWords = ({ words, matchedWords, activeWord, select }) => {
   return (
-    <div>
+    <div className="word">
       {words.map((word) => (
-        <div key={word.name} className="d-flex word">
+        <div key={word.name}>
           <Word
             matchedWords={matchedWords}
             activeWord={activeWord}

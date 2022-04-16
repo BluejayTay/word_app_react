@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import UserLogInForm from "./UserLogInForm";
 import UserSignUpForm from "./UserSignUpForm";
-import { Redirect } from "react-router-dom";
-import ErrorMessage from "./ErrorMessage";
-import LoadingDisplay from "./LoadingDisplay";
+import ErrorMessage from "../ErrorMessage";
+import LoadingDisplay from "../LoadingDisplay";
 import styled from "styled-components";
 
 const StyledLogin = styled.div`

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { API_ROOT } from "../apiRoot";
+import { API_ROOT } from "../../apiRoot";
 import MatchCountDisplay from "./MatchCountDisplay";
 import RecordDisplay from "./RecordDisplay";
 import Timer from "./Timer";
@@ -41,9 +41,7 @@ const StatsPanel = ({
 
   useEffect(() => {
     gameStart
-      ? setStatusMessage(
-          "Make matches by finding the correct word-synonym pairs!"
-        )
+      ? setStatusMessage("Find the correct word-synonym pairs!")
       : setStatusMessage("Press start to begin  ->");
   }, [gameStart]);
 
@@ -59,7 +57,7 @@ const StatsPanel = ({
         />
         <MatchCountDisplay matchCount={matchCount} maxMatchNum={maxMatchNum} />
       </div>
-      <div className="col d-flex right-panel">
+      <div className="col right-panel">
         <div className="col d-flex p-2">
           <div className="text-center m-auto">{statusMessage}</div>
           <div className="text-center my-auto mx-2 align-self-end">
