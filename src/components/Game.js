@@ -19,7 +19,7 @@ const StyledGame = styled.div`
   }
   .right-panel {
     background-color: #fcffee;
-    font-size: 18px;
+    font-size: 16px;
   }
   .left-panel {
     border-right: 2px solid #100804;
@@ -108,7 +108,7 @@ const StyledGame = styled.div`
       align-items: center;
     }
     .right-panel {
-      font-size: 16px;
+      font-size: 14px;
     }
     .word-btn {
       font-size: 14px;
@@ -228,7 +228,7 @@ const Game = (props) => {
           </div>
 
           <div className="row game-body g-0 p-2 rounded-bottom">
-            <div className="col-5 pb-4" id="words">
+            <div className="col-5 pb-4 word">
               <h3 className="h2 word">Words</h3>
               <GameWords
                 words={words}
@@ -242,10 +242,8 @@ const Game = (props) => {
               <ConnectingLines matchedWords={matchedWords} />
             </div>
 
-            <div className="col-5">
-              <h3 className="h2 synonym" id="synonyms">
-                Synonyms
-              </h3>
+            <div className="col-5 synonym">
+              <h3 className="h2 synonym">Synonyms</h3>
               <GameSynonyms
                 matchedSynonyms={matchedSynonyms}
                 activeSynonym={activeSynonym}
