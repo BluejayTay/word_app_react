@@ -19,7 +19,7 @@ const StyledGame = styled.div`
   }
   .right-panel {
     background-color: #fcffee;
-    font-size: 16px;
+    font-size: 14px;
   }
   .left-panel {
     border-right: 2px solid #100804;
@@ -107,9 +107,7 @@ const StyledGame = styled.div`
       display: flex;
       align-items: center;
     }
-    .right-panel {
-      font-size: 14px;
-    }
+
     .word-btn {
       font-size: 14px;
       padding-left: 6px;
