@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
 import GameForm from "./GameForm";
+import Instructions from "./Instructions";
 import MWlogo from "../../MWlogo.png";
 import styled from "styled-components";
+import GuestMessage from "./GuestMessage";
 
 const StyledWelcome = styled.div`
   .welcome-container {
@@ -65,27 +67,7 @@ const Welcome = ({ user }) => {
         </div>
       );
     } else {
-      return (
-        <div>
-          <h1 id="header" className="h1 text-center">
-            Welcome to <span className="h1 brand-style">WerdNerd</span>, fellow
-            nerd!
-          </h1>{" "}
-          <div className="text-center">
-            <p className="mb-2">
-              <span className="brand-style">WerdNerd</span> uses
-              Merriam-Webster&apos;s Collegiate® Thesaurus to create an
-              educational game that puts your word-matching skills to the test!
-            </p>
-            <p className="mb-2">
-              Don&apos;t take our &quot;werd&quot; for it - Try it yourself with
-              one of our original lists below, or sign-up/log-in to create
-              custom ones. It&apos;s free, easy to play, and you just might
-              learn something!
-            </p>
-          </div>
-        </div>
-      );
+      return <GuestMessage />;
     }
   };
 
@@ -103,7 +85,7 @@ const Welcome = ({ user }) => {
       return (
         <div className="text-center my-4">
           <Link to={`/users/login`} className="btn btn-green">
-            Sign up/Log in to make a new list!
+            Sign-up/Log-in to make a new list!
           </Link>
         </div>
       );
@@ -117,29 +99,7 @@ const Welcome = ({ user }) => {
         <StyledWelcome>
           <div className="welcome-container card-body rounded-top shadow-lg">
             {renderWelcomePage()}
-            <div>
-              <h5 className="h5">How to play:</h5>
-              <ol>
-                <li>
-                  Select a list to use for your game from the drop-down
-                  selection below.
-                </li>
-                <li>Press the &quot;Play&quot; button to load the game.</li>
-                <li>
-                  Press &quot;Start&quot; to reveal the randomly-selected
-                  synonyms and start the clock!{" "}
-                </li>
-                <li>
-                  Match each word to their synonym by selecting the word on the
-                  left and their synonym on the right. A correct match will be
-                  revealed with an orange line connecting them together!
-                </li>
-                <li>
-                  Once you&apos;ve found all the matches, the timer stops and
-                  saves your time if you beat the record.
-                </li>
-              </ol>
-            </div>
+            <Instructions />
             <div className="text-center">
               <GameForm user={user} error={error} setError={setError} />
             </div>
