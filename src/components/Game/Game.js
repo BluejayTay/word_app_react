@@ -111,7 +111,7 @@ const Game = (props) => {
 
           <div className="row game-body g-0 rounded-bottom">
             <div className="col-5 pb-4">
-              <h2 className="h2 word">Words</h3>
+              <h2 className="h2 word">Words</h2>
               <GameWords
                 words={words}
                 matchedWords={matchedWords}
@@ -125,7 +125,7 @@ const Game = (props) => {
             </div>
 
             <div className="col-5">
-              <h2 className="h2 synonym">Synonyms</h3>
+              <h2 className="h2 synonym">Synonyms</h2>
               <GameSynonyms
                 matchedSynonyms={matchedSynonyms}
                 activeSynonym={activeSynonym}
