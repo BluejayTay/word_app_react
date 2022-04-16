@@ -38,7 +38,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
 
   return (
     <div>
-      <h1 className="brand-style text-center mt-4">Sign Up</h1>
+      <h1 className="h1 brand-style text-center mt-4">Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <div className="container d-flex justify-content-center p-0">
           <div className="form-group row g-0 col-10 col-md-6 mt-3">
@@ -54,7 +54,7 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
             <input
               className="ps-1 my-1"
               type="password"
-              placeholder="password (between 6-50 characters)"
+              placeholder="password (6-50 characters)"
               onChange={(event) => setPassword(event.target.value)}
             />
 

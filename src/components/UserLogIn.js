@@ -24,6 +24,9 @@ const StyledLogin = styled.div`
   label {
     font-size: 18px;
   }
+  .h1 {
+    font-size: 38px;
+  }
   @media screen and (min-width: 500px) {
     .btn-inactive:hover {
       background-color: #aeedf0;

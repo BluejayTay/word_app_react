@@ -35,7 +35,7 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setIsLoading }) => {
 
   return (
     <div>
-      <h1 className="brand-style text-center mt-4">Log In</h1>
+      <h1 className="h1 brand-style text-center mt-4">Log In</h1>
       <form onSubmit={handleLogIn}>
         <div className="container d-flex justify-content-center p-0">
           <div className="form-group row g-0 col-10 col-md-6 mt-3">
