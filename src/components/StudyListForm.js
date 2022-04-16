@@ -27,7 +27,7 @@ const StudyListForm = ({ user }) => {
   const [isReady, setIsReady] = useState(false);
   const [isListCreated, setIsListCreated] = useState(false);
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleWordsHash = (event) => {
     setWordsHash({ ...wordsHash, [event.target.name]: event.target.value });
@@ -43,7 +43,7 @@ const StudyListForm = ({ user }) => {
 
     const token = localStorage.getItem("auth_token");
     if (isReady) {
-      setIsLoading(true);
+      setLoading(true);
       axios
         .post(
           `${API_ROOT}api/study_lists`,
@@ -63,7 +63,7 @@ const StudyListForm = ({ user }) => {
         })
         .catch((error) => {
           console.log(error);
-          setIsLoading(false);
+          setLoading(false);
           setIsReady(false);
           setError(
             "Error: Please make sure to include a unique title and 1-10 valid words and try again."
@@ -85,7 +85,7 @@ const StudyListForm = ({ user }) => {
   return (
     <div>
       <ErrorMessage error={error} setError={setError} />
-      {isLoading ? <LoadingDisplay /> : null}
+      {loading ? <LoadingDisplay /> : null}
       <div className="container justify-content-center">
         <StyledStudyListForm>
           <div className="new-list-container card px-3 py-5 mt-5 justify-content-center">
