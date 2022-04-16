@@ -12,7 +12,7 @@ const RecordDisplay = ({ fastestTimeRecord }) => {
   return (
     <div className="col record-display m-0 p-1">
       <div>Record:</div>
-      <div className="h2 text-center m-auto ms-2">{showRecord()}</div>
+      <div className="h3 text-center m-auto ms-2">{showRecord()}</div>
     </div>
   );
 };

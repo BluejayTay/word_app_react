@@ -4,7 +4,7 @@ const GameWords = ({ words, matchedWords, activeWord, select }) => {
   return (
     <div>
       {words.map((word) => (
-        <div key={word.name} className="d-flex justify-content-end">
+        <div key={word.name} className="d-flex word">
           <Word
             matchedWords={matchedWords}
             activeWord={activeWord}

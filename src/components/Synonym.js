@@ -22,8 +22,8 @@ const Synonym = ({ synonym, select, activeSynonym, matchedSynonyms }) => {
         }}
         className={
           activeSynonym == matchIndex
-            ? "btn selected word-btn glow-btn my-1"
-            : "btn word-btn glow-btn my-1"
+            ? "btn selected word-btn my-1"
+            : "btn word-btn my-1"
         }
       >
         {name}

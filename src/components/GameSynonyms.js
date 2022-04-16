@@ -23,7 +23,7 @@ const GameSynonyms = ({
     return (
       <div>
         {shuffledSynonyms.map((synonym) => (
-          <div key={synonym.name} className="d-flex justify-content-start">
+          <div key={synonym.name} className="d-flex synonym">
             <Synonym
               matchedSynonyms={matchedSynonyms}
               synonym={synonym}

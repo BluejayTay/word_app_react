@@ -19,7 +19,7 @@ const StyledGame = styled.div`
   }
   .right-panel {
     background-color: #fcffee;
-    fontsize: 18px;
+    font-size: 18px;
   }
   .left-panel {
     border-right: 2px solid #100804;
@@ -28,7 +28,7 @@ const StyledGame = styled.div`
   .timer-display,
   .match-display {
     background-color: #fcffee;
-    fontsize: 18px;
+    font-size: 18px;
   }
   .record-display,
   .timer-display {
@@ -36,6 +36,7 @@ const StyledGame = styled.div`
   }
   .game-card {
     border: 1px solid #100804;
+    margin-top: 48px;
   }
   .game-title {
     background-color: #e4fbff;
@@ -55,24 +56,47 @@ const StyledGame = styled.div`
   .btn:disabled {
     background-color: #ff621f;
   }
+  .synonym {
+    justify-content: start;
+    text-align: start;
+    padding-left: 20px;
+  }
+  .word {
+    justify-content: end;
+    text-align: end;
+    padding-right: 20px;
+  }
+
   @media screen and (max-width: 450px) {
     .brand-title {
-      font-size: 30px;
+      font-size: 28px;
     }
     .record-display,
     .timer-display,
-    .match-display,
-    .message-display {
-      fontsize: 14px;
-    }
-    .word-btn {
+    .match-display {
       font-size: 14px;
     }
-    .h2 {
-      font-size: 18px;
+    .game-card {
+      margin-top: 4px;
+    }
+    .synonym {
+      padding-left: 10px;
+    }
+    .word {
+      padding-right: 10px;
     }
   }
+
   @media screen and (max-width: 768px) {
+    .game-card {
+      margin-top: 16px;
+    }
+    .h2 {
+      font-size: 20px;
+    }
+    .h3 {
+      font-size: 16px;
+    }
     .left-panel {
       border-right: 0px;
       border-bottom: 2px solid #100804;
@@ -82,6 +106,14 @@ const StyledGame = styled.div`
     .match-display {
       display: flex;
       align-items: center;
+    }
+    .right-panel {
+      font-size: 16px;
+    }
+    .word-btn {
+      font-size: 14px;
+      padding-left: 6px;
+      padding-right: 6px;
     }
   }
   @media screen and (min-width: 500px) {
@@ -178,7 +210,7 @@ const Game = (props) => {
   return (
     <StyledGame>
       <div className="container">
-        <div className="card game-card shadow-lg mt-5 mb-1">
+        <div className="card game-card shadow-lg mb-1">
           <div className="card-header game-title">
             <h1 className="brand-title text-center">{title}</h1>
           </div>
@@ -197,7 +229,7 @@ const Game = (props) => {
 
           <div className="row game-body g-0 p-2 rounded-bottom">
             <div className="col-5 pb-4" id="words">
-              <h2 className="text-end">Words</h2>
+              <h3 className="h2 word">Words</h3>
               <GameWords
                 words={words}
                 matchedWords={matchedWords}
@@ -210,8 +242,10 @@ const Game = (props) => {
               <ConnectingLines matchedWords={matchedWords} />
             </div>
 
-            <div className="col-5" id="synonyms">
-              <h2 className="text-start">Synonyms</h2>
+            <div className="col-5">
+              <h3 className="h2 synonym" id="synonyms">
+                Synonyms
+              </h3>
               <GameSynonyms
                 matchedSynonyms={matchedSynonyms}
                 activeSynonym={activeSynonym}
