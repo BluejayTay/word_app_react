@@ -8,6 +8,7 @@ const GameForm = ({ user, setError }) => {
   const [studyLists, setStudyLists] = useState([]);
   const [studyListId, setStudyListId] = useState();
   const [toGame, setToGame] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -21,11 +22,13 @@ const GameForm = ({ user, setError }) => {
         })
         .then((response) => {
           setStudyLists(response.data);
+          setLoading(false);
           console.log(response.data);
         });
     if (!token)
       axios.get(`${API_ROOT}api/study_lists`).then((response) => {
         setStudyLists(response.data);
+        setLoading(false);
         console.log(response.data);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,6 +38,10 @@ const GameForm = ({ user, setError }) => {
     studyListId && studyListId != defaultOption
       ? setToGame(true)
       : setError("Error: Please select a list before submitting");
+  };
+
+  const renderLoadingStatus = () => {
+    loading ? "Loading..." : null;
   };
 
   if (toGame && studyListId) {
@@ -57,12 +64,14 @@ const GameForm = ({ user, setError }) => {
       >
         <div className="d-flex justify-content-center align-items-center">
           <div>
+            {renderLoadingStatus()}
             <select
               id="studyList"
               defaultValue={defaultOption}
               onChange={(event) => setStudyListId(event.target.value)}
               onBlur={(event) => setStudyListId(event.target.value)}
             >
+              {" "}
               <option disabled>{defaultOption}</option>
               {studyLists.map((list) => (
                 <option key={list.id} value={list.id}>
