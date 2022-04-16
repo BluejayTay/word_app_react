@@ -20,7 +20,7 @@ const StyledWelcome = styled.div`
     background-color: white;
     font-size: 12px;
     display: flex;
-    margin-bottom: 4px;
+    margin-bottom: 48px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -43,6 +43,9 @@ const StyledWelcome = styled.div`
     }
     .h5 {
       font-size: 14px;
+    }
+    #footer {
+      margin-bottom: 4px;
     }
   }
 `;
