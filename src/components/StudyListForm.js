@@ -14,10 +14,8 @@ const StyledStudyListForm = styled.div`
     font-family: "Rampart One", sans-serif;
     color: #100804;
   }
-  .add-btn {
-    background-color: #ff621f;
-    color: #e4f967;
-    font-size: 20px;
+  .h1 {
+    font-size: 38px;
   }
 `;
 
@@ -90,8 +88,8 @@ const StudyListForm = ({ user }) => {
       {isLoading ? <LoadingDisplay /> : null}
       <div className="container justify-content-center">
         <StyledStudyListForm>
-          <div className="new-list-container card p-3 mt-5 justify-content-center">
-            <h1 className="brand-style text-center mb-4">New List</h1>
+          <div className="new-list-container card px-3 py-5 mt-5 justify-content-center">
+            <h1 className="h1 brand-style text-center mb-4">New List</h1>
             <form onSubmit={handleCreateStudyList}>
               <div className="container d-flex justify-content-center">
                 <div className="row g-0 col-10 col-md-6">
