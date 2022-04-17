@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# WerdNerd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+See the [deployed app](https://https://werd-nerd.herokuapp.com/)
 
-## Available Scripts
+[Link](https://github.com/BluejayTay/word_app_rails) to Ruby on Rails backend/API
 
-In the project directory, you can run:
+#
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+WerdNerd is an app that uses Merriam-Webster&apos;s Collegiate® Thesaurus to create word-matching games for developing one’s vocabulary. Users can utilize pre-assembled word-lists for their games, or create their own. Each game pulls randomly-selected synonyms for each word in it&apos;s word-list, so that every game with a given word-list is different!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+How to play:
 
-### `npm test`
+<ol>
+        <li>
+          Select a list to use for your game from the drop-down selection below.
+        </li>
+        <li>Press the &quot;Play&quot; button to load the game.</li>
+        <li>
+          Press &quot;Start&quot; to reveal the randomly-selected synonyms and
+          start the clock!{" "}
+        </li>
+        <li>
+          Match each word to their synonym by selecting the word on the left and
+          their synonym on the right. A correct match will be revealed with an
+          orange line connecting them together!
+        </li>
+        <li>
+          Once you&apos;ve found all the matches, the timer stops and saves your
+          time if you beat the record.
+        </li>
+      </ol>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Built with:
 
-### `npm run build`
+- Ruby on Rails
+- React
+- JWT authorization
+- PostgreSQL
+- HTML, CSS, BootStrap
+- Merriam-Webster&apos;s Collegiate® Thesaurus
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshot-Mobile
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="center">
+<img src="src/screenshot-mobile.png"  height="500">
+</p>
 
-### `npm run eject`
+## Screenshot-Desktop
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="center">
+<img src="src/screenshot-desktop.png"  height="500">
+</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Future Enhancements
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add a "study" feature to allow users to study definitiions for words in their word-lists.
+- Add feature that lets suggests similarly spelled words if a given word is not in the thesaurus or is misspelled.
+- Add ability to post initials for highscores for the orginal WerdNerd word-lists.
