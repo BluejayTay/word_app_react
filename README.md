@@ -19,7 +19,7 @@ How to play:
         <li>Press the &quot;Play&quot; button to load the game.</li>
         <li>
           Press &quot;Start&quot; to reveal the randomly-selected synonyms and
-          start the clock!{" "}
+          start the clock!
         </li>
         <li>
           Match each word to their synonym by selecting the word on the left and
