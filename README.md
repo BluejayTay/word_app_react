@@ -8,7 +8,7 @@ See the [deployed app](https://https://werd-nerd.herokuapp.com/)
 
 ## About
 
-WerdNerd is an app that uses Merriam-Webster&apos;s Collegiate® Thesaurus to create word-matching games for developing one’s vocabulary. Users can utilize pre-assembled word-lists for their games, or create their own. Each game pulls randomly-selected synonyms for each word in it&apos;s word-list, so that every game with a given word-list is different!
+WerdNerd is an app that uses Merriam-Webster&apos;s Collegiate® Thesaurus to create word-matching games for developing one’s vocabulary. Users can utilize pre-assembled word-lists for their games, or create their own if they are logged-in. Each game pulls randomly-selected synonyms for each word in it&apos;s word-list, so that every game with a given word-list is different!
 
 How to play:
 
