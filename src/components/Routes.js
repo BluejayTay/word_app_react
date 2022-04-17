@@ -5,7 +5,7 @@ import axios from "axios";
 import Nav from "./Nav";
 import Game from "./Game/Game";
 import Welcome from "./Home/Welcome";
-import StudyListForm from "./StudyListForm";
+import StudyListForm from "./StudyLists/StudyListForm";
 import UserLogIn from "./User/UserLogIn";
 
 const Routes = () => {

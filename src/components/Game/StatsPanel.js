@@ -20,7 +20,7 @@ const StatsPanel = ({
 
   useEffect(() => {
     if (gameEnd == true) {
-      (!fastestTimeRecord && seconds > 0) || seconds < fastestTimeRecord
+      (!fastestTimeRecord && seconds > 0) || fastestTimeRecord > seconds
         ? handleSaveTime()
         : setStatusMessage(
             `${maxMatchNum} words matched in ${seconds}s. Reset to play again!`
@@ -42,7 +42,7 @@ const StatsPanel = ({
   useEffect(() => {
     gameStart
       ? setStatusMessage("Find the correct word-synonym pairs!")
-      : setStatusMessage("Press start to begin  ->");
+      : setStatusMessage("Press start to begin ⮕");
   }, [gameStart]);
 
   return (

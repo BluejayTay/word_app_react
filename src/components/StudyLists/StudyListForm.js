@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { API_ROOT } from "../apiRoot";
+import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import ErrorMessage from "./ErrorMessage";
-import LoadingDisplay from "./LoadingDisplay";
+import ErrorMessage from "../ErrorMessage";
+import LoadingDisplay from "../LoadingDisplay";
 import styled from "styled-components";
 
 const StyledStudyListForm = styled.div`
