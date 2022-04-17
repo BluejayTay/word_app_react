@@ -1,6 +1,6 @@
 # WerdNerd
 
-See the [deployed app](https://https://werd-nerd.herokuapp.com/)
+See the [deployed app](https://werd-nerd.herokuapp.com/)
 
 [Link](https://github.com/BluejayTay/word_app_rails) to Ruby on Rails backend/API
 
