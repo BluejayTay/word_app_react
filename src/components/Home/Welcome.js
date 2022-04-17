@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
 import GameForm from "./GameForm";
 import Instructions from "./Instructions";
+import LoadingDisplay from "../LoadingDisplay";
 import MWlogo from "../../MWlogo.png";
 import styled from "styled-components";
 import GuestMessage from "./GuestMessage";
@@ -54,6 +55,7 @@ const StyledWelcome = styled.div`
 
 const Welcome = ({ user }) => {
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const renderWelcomePage = () => {
     const token = localStorage.getItem("auth_token");
@@ -101,7 +103,13 @@ const Welcome = ({ user }) => {
             {renderWelcomePage()}
             <Instructions />
             <div className="text-center">
-              <GameForm user={user} error={error} setError={setError} />
+              {loading ? <LoadingDisplay /> : null}
+              <GameForm
+                user={user}
+                error={error}
+                setError={setError}
+                setLoading={setLoading}
+              />
             </div>
 
             {renderWelcomeLinks()}

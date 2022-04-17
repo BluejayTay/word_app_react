@@ -3,12 +3,11 @@ import { Redirect } from "react-router-dom";
 import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 
-const GameForm = ({ user, setError }) => {
+const GameForm = ({ user, setError, setLoading }) => {
   const defaultOption = "Choose a list";
   const [studyLists, setStudyLists] = useState([]);
   const [studyListId, setStudyListId] = useState();
   const [toGame, setToGame] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -40,10 +39,6 @@ const GameForm = ({ user, setError }) => {
       : setError("Error: Please select a list before submitting");
   };
 
-  const renderLoadingStatus = () => {
-    loading ? "Loading..." : null;
-  };
-
   if (toGame && studyListId) {
     return (
       <Redirect
@@ -56,7 +51,6 @@ const GameForm = ({ user, setError }) => {
 
   return (
     <div>
-      <div>{renderLoadingStatus()}</div>
       <form
         onSubmit={(event) => {
           event.preventDefault();
