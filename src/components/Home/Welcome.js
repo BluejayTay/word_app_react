@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
 import GameForm from "./GameForm";
 import Instructions from "./Instructions";
-import LoadingDisplay from "../LoadingDisplay";
+import LoadingSpin from "react-loading-spin";
 import MWlogo from "../../MWlogo.png";
 import styled from "styled-components";
 import GuestMessage from "./GuestMessage";
@@ -103,7 +103,7 @@ const Welcome = ({ user }) => {
             {renderWelcomePage()}
             <Instructions />
             <div className="text-center">
-              {loading ? <LoadingDisplay /> : null}
+              {loading ? <LoadingSpin /> : null}
               <GameForm
                 user={user}
                 error={error}
