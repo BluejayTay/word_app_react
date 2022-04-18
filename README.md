@@ -36,11 +36,9 @@ Built with:
 
 #
 
-#
-
 ## Getting Started
 
-### Running natively (You will need to sign up for an API key for Merriam Webster's Thesaurus API at [link](https://www.dictionaryapi.com/)<br>
+### Running natively (You will need to sign up for an API key at [Merriam Webster's Thesaurus API](https://www.dictionaryapi.com/)<br>
 
 1.) Clone both the [rails backend/API](https://github.com/BluejayTay/word_app_rails) and react frontend/client repos
 
