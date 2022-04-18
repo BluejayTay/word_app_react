@@ -90,6 +90,16 @@ const StudyListForm = ({ user }) => {
         <StyledStudyListForm>
           <div className="new-list-container card px-3 py-5 mt-5 justify-content-center">
             <h1 className="h1 brand-style text-center mb-4">New List</h1>
+            <div className="d-flex justify-content-center">
+              <ul>
+                <li>
+                  If a word is misspelled or doesn&apos;t exist in the
+                  thesaurus, it will be skipped over and the list will be made
+                  without it.
+                </li>
+              </ul>
+            </div>
+
             <form onSubmit={handleCreateStudyList}>
               <div className="container d-flex justify-content-center">
                 <div className="row g-0 col-10 col-md-6">
