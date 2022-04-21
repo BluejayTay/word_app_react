@@ -42,7 +42,12 @@ const StudyListForm = ({ user }) => {
     event.preventDefault();
 
     const token = localStorage.getItem("auth_token");
-    if (isReady) {
+    if (isReady && (!token || !user)) {
+      setError(
+        "Oops, it looks like your log-in is expired, please log-in again to make a list."
+      );
+    }
+    if (isReady && token && user) {
       setLoading(true);
       axios
         .post(

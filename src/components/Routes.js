@@ -23,6 +23,11 @@ const Routes = () => {
         .then((response) => {
           console.log(response.data);
           setUser(response.data.user);
+        })
+        .catch((error) => {
+          console.log(error);
+          setUser({});
+          localStorage.clear();
         });
     }
   }, []);

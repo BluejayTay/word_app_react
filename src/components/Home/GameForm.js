@@ -11,7 +11,7 @@ const GameForm = ({ user, setError, setLoading }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
-    if (token)
+    if (token && user)
       axios
         .get(`${API_ROOT}api/study_lists`, {
           headers: {
@@ -24,7 +24,7 @@ const GameForm = ({ user, setError, setLoading }) => {
           setLoading(false);
           console.log(response.data);
         });
-    if (!token)
+    else
       axios.get(`${API_ROOT}api/study_lists`).then((response) => {
         setStudyLists(response.data);
         setLoading(false);

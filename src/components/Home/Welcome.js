@@ -59,7 +59,7 @@ const Welcome = ({ user }) => {
 
   const renderWelcomePage = () => {
     const token = localStorage.getItem("auth_token");
-    if (token) {
+    if (token && user) {
       return (
         <div>
           <h1 id="header" className="h1 text-center">
@@ -75,7 +75,7 @@ const Welcome = ({ user }) => {
 
   const renderWelcomeLinks = () => {
     const token = localStorage.getItem("auth_token");
-    if (token) {
+    if (token && user) {
       return (
         <div className="text-center my-4">
           <Link to={`/study_lists/new`} className="btn btn-green">
