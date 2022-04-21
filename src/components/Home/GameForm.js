@@ -31,7 +31,7 @@ const GameForm = ({ user, setError, setLoading }) => {
         console.log(response.data);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, []);
 
   const handleGame = () => {
     studyListId && studyListId != defaultOption
