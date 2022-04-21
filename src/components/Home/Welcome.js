@@ -106,12 +106,10 @@ const Welcome = ({ user }) => {
               {loading ? <LoadingSpin /> : null}
               <GameForm
                 user={user}
-                error={error}
                 setError={setError}
                 setLoading={setLoading}
               />
             </div>
-
             {renderWelcomeLinks()}
           </div>
           <div id="footer" className="card-footer shadow-lg p-1">
