@@ -1,37 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { API_ROOT } from "../../apiRoot";
-import axios from "axios";
 
-const GameForm = ({ user, setError, setLoading }) => {
+const GameForm = ({ studyLists, setError }) => {
   const defaultOption = "Choose a list";
-  const [studyLists, setStudyLists] = useState([]);
   const [studyListId, setStudyListId] = useState();
   const [toGame, setToGame] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("auth_token");
-    if (token && user)
-      axios
-        .get(`${API_ROOT}api/study_lists`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          user_id: user["id"],
-        })
-        .then((response) => {
-          setStudyLists(response.data);
-          setLoading(false);
-          console.log(response.data);
-        });
-    else
-      axios.get(`${API_ROOT}api/study_lists`).then((response) => {
-        setStudyLists(response.data);
-        setLoading(false);
-        console.log(response.data);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleGame = () => {
     studyListId && studyListId != defaultOption

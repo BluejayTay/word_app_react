@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { API_ROOT } from "../../apiRoot";
+import axios from "axios";
 import ErrorMessage from "../ErrorMessage";
 import GameForm from "./GameForm";
 import Instructions from "./Instructions";
@@ -55,7 +57,36 @@ const StyledWelcome = styled.div`
 
 const Welcome = ({ user }) => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [studyLists, setStudyLists] = useState([]);
+
+  useEffect(() => {
+    requestStudyLists();
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function requestStudyLists() {
+    setLoading(true);
+    const token = localStorage.getItem("auth_token");
+    if (token && user)
+      axios
+        .get(`${API_ROOT}api/study_lists`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          user_id: user["id"],
+        })
+        .then((response) => {
+          setStudyLists(response.data);
+          setLoading(false);
+          console.log(response.data);
+        });
+    else
+      axios.get(`${API_ROOT}api/study_lists`).then((response) => {
+        setStudyLists(response.data);
+        setLoading(false);
+        console.log(response.data);
+      });
+  }
 
   const renderWelcomePage = () => {
     const token = localStorage.getItem("auth_token");
@@ -104,11 +135,7 @@ const Welcome = ({ user }) => {
             <Instructions />
             <div className="text-center">
               {loading ? <LoadingSpin /> : null}
-              <GameForm
-                user={user}
-                setError={setError}
-                setLoading={setLoading}
-              />
+              <GameForm studyLists={studyLists} setError={setError} />
             </div>
             {renderWelcomeLinks()}
           </div>
