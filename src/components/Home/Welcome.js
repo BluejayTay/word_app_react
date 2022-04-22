@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { API_ROOT } from "../../apiRoot";
-import axios from "axios";
 import ErrorMessage from "../ErrorMessage";
 import GameForm from "./GameForm";
 import Instructions from "./Instructions";
@@ -9,6 +7,7 @@ import LoadingSpin from "react-loading-spin";
 import MWlogo from "../../MWlogo.png";
 import styled from "styled-components";
 import GuestMessage from "./GuestMessage";
+import UserMessage from "./UserMessage";
 
 const StyledWelcome = styled.div`
   .welcome-container {
@@ -57,56 +56,17 @@ const StyledWelcome = styled.div`
 
 const Welcome = ({ user }) => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [studyLists, setStudyLists] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    requestStudyLists();
-  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  async function requestStudyLists() {
-    setLoading(true);
-    const token = localStorage.getItem("auth_token");
-    if (token && user)
-      axios
-        .get(`${API_ROOT}api/study_lists`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          user_id: user["id"],
-        })
-        .then((response) => {
-          setStudyLists(response.data);
-          setLoading(false);
-          console.log(response.data);
-        });
-    else
-      axios.get(`${API_ROOT}api/study_lists`).then((response) => {
-        setStudyLists(response.data);
-        setLoading(false);
-        console.log(response.data);
-      });
-  }
-
-  const renderWelcomePage = () => {
-    const token = localStorage.getItem("auth_token");
-    if (token && user) {
-      return (
-        <div>
-          <h1 id="header" className="h1 text-center">
-            Welcome back to <span className="h1 brand-style">WerdNerd</span>,{" "}
-            {user["email"]}!
-          </h1>
-        </div>
-      );
-    } else {
-      return <GuestMessage />;
-    }
+  const renderWelcomeMessage = () => {
+    const token = sessionStorage.getItem("auth_token");
+    if (token) return <UserMessage user={user} />;
+    else return <GuestMessage />;
   };
 
   const renderWelcomeLinks = () => {
-    const token = localStorage.getItem("auth_token");
-    if (token && user) {
+    const token = sessionStorage.getItem("auth_token");
+    if (token) {
       return (
         <div className="text-center my-4">
           <Link to={`/study_lists/new`} className="btn btn-green">
@@ -131,11 +91,15 @@ const Welcome = ({ user }) => {
       <div className="container d-flex justify-content-center">
         <StyledWelcome>
           <div className="welcome-container card-body rounded-top shadow-lg">
-            {renderWelcomePage()}
+            {renderWelcomeMessage()}
             <Instructions />
             <div className="text-center">
               {loading ? <LoadingSpin /> : null}
-              <GameForm studyLists={studyLists} setError={setError} />
+              <GameForm
+                user={user}
+                setLoading={setLoading}
+                setError={setError}
+              />
             </div>
             {renderWelcomeLinks()}
           </div>
