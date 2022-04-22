@@ -12,7 +12,7 @@ const Routes = () => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const token = localStorage.getItem("auth_token");
+    const token = sessionStorage.getItem("auth_token");
     if (token) {
       axios
         .get(`${API_ROOT}api/users/auto_login`, {
@@ -27,7 +27,7 @@ const Routes = () => {
         .catch((error) => {
           console.log(error);
           setUser({});
-          localStorage.clear();
+          sessionStorage.clear();
         });
     }
   }, []);
@@ -35,7 +35,7 @@ const Routes = () => {
   return (
     <div>
       <Router>
-        <Nav setUser={setUser} />
+        <Nav user={user} setUser={setUser} />
         <Switch>
           <Route exact path="/" render={() => <Welcome user={user} />} />
           <Route

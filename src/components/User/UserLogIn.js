@@ -40,10 +40,10 @@ const StyledLogin = styled.div`
 const UserLogIn = ({ setUser }) => {
   const [form, setForm] = useState("login");
   const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [toWelcome, setToWelcome] = useState(false);
   const [error, setError] = useState("");
 
-  if (isLoggedIn == true) {
+  if (toWelcome) {
     return (
       <Redirect
         to={{
@@ -59,7 +59,7 @@ const UserLogIn = ({ setUser }) => {
         return (
           <UserSignUpForm
             setUser={setUser}
-            setIsLoggedIn={setIsLoggedIn}
+            setToWelcome={setToWelcome}
             setError={setError}
             setLoading={setLoading}
           />
@@ -68,7 +68,7 @@ const UserLogIn = ({ setUser }) => {
         return (
           <UserLogInForm
             setUser={setUser}
-            setIsLoggedIn={setIsLoggedIn}
+            setToWelcome={setToWelcome}
             setError={setError}
             setLoading={setLoading}
           />

@@ -24,7 +24,7 @@ const StudyListForm = ({ user }) => {
   const [wordsHash, setWordsHash] = useState({});
   const [wordsArray, setWordsArray] = useState([]);
   const [wordCount, setWordCount] = useState(1);
-  const [isReady, setIsReady] = useState(false);
+  const [wordsArrayFormatted, setWordsArrayFormatted] = useState(false);
   const [isListCreated, setIsListCreated] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,19 +35,19 @@ const StudyListForm = ({ user }) => {
 
   const formatWords = () => {
     setWordsArray(Object.values(wordsHash));
-    setIsReady(true);
+    setWordsArrayFormatted(true);
   };
 
   const handleCreateStudyList = (event) => {
     event.preventDefault();
 
-    const token = localStorage.getItem("auth_token");
-    if (isReady && (!token || !user)) {
+    const token = sessionStorage.getItem("auth_token");
+    if (wordsArrayFormatted && (!token || user == {})) {
       setError(
-        "Oops, it looks like your log-in is expired, please log-in again to make a list."
+        "Oops... it looks like your account authorization is expired. Please 'log-out' and then 'log-in' again to renew your authorization and make a list."
       );
     }
-    if (isReady && token && user) {
+    if (wordsArrayFormatted && token && user != {}) {
       setLoading(true);
       axios
         .post(
@@ -69,7 +69,7 @@ const StudyListForm = ({ user }) => {
         .catch((error) => {
           console.log(error);
           setLoading(false);
-          setIsReady(false);
+          setWordsArrayFormatted(false);
           setError(
             "Error: Please make sure to include a unique title and 1-10 valid words and try again."
           );

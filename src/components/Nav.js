@@ -57,16 +57,16 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Nav = ({ setUser }) => {
+const Nav = ({ user, setUser }) => {
   const renderUserButtons = () => {
-    const token = localStorage.getItem("auth_token");
-    if (token)
+    const token = sessionStorage.getItem("auth_token");
+    if (token && user != {})
       return (
         <Link
           to={"/"}
           className="btn btn-nav"
           onClick={() => {
-            localStorage.clear();
+            sessionStorage.clear();
             setUser({});
           }}
         >
@@ -80,7 +80,6 @@ const Nav = ({ setUser }) => {
         </Link>
       );
   };
-
   return (
     <StyledNav>
       <nav className="navbar p-0">
@@ -95,7 +94,7 @@ const Nav = ({ setUser }) => {
                   <i className="bi bi-house-fill"></i>
                 </Link>
               </li>
-              <li className="nav-item">{renderUserButtons()}</li>
+              <li>{renderUserButtons()}</li>
             </ul>
           </div>
         </div>

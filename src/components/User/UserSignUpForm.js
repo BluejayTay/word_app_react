@@ -2,7 +2,7 @@ import { useState } from "react";
 import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 
-const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
+const UserSignUpForm = ({ setUser, setToWelcome, setError, setLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -20,10 +20,10 @@ const UserSignUpForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
         },
       })
       .then((response) => {
-        localStorage.setItem("auth_token", response.data.auth_token);
+        sessionStorage.setItem("auth_token", response.data.auth_token);
         setLoading(false);
         setUser(response.data.user);
-        setIsLoggedIn(true);
+        setToWelcome(true);
       })
       .catch((error) => {
         setLoading(false);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { API_ROOT } from "../../apiRoot";
 import axios from "axios";
 
-const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
+const UserLogInForm = ({ setUser, setToWelcome, setError, setLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,10 +18,10 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
         },
       })
       .then((response) => {
-        localStorage.setItem("auth_token", response.data.auth_token);
+        sessionStorage.setItem("auth_token", response.data.auth_token);
         setLoading(false);
         setUser(response.data.user);
-        setIsLoggedIn(true);
+        setToWelcome(true);
       })
       .catch((error) => {
         setLoading(false);
@@ -55,7 +55,6 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
               placeholder="password"
               onChange={(event) => setPassword(event.target.value)}
             />
-
             <button className="btn btn-green mt-5" type="submit">
               Log into <span className="brand-style">WerdNerd!</span>
             </button>
@@ -65,4 +64,5 @@ const UserLogInForm = ({ setUser, setIsLoggedIn, setError, setLoading }) => {
     </div>
   );
 };
+
 export default UserLogInForm;
