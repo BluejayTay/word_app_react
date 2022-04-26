@@ -55,7 +55,7 @@ const UserLogInForm = ({ setUser, setToWelcome, setError, setLoading }) => {
               placeholder="password"
               onChange={(event) => setPassword(event.target.value)}
             />
-            <button className="btn btn-green mt-5" type="submit">
+            <button className="btn btn-login mt-5" type="submit">
               Log into <span className="brand-style">WerdNerd!</span>
             </button>
           </div>

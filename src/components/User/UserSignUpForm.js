@@ -66,7 +66,7 @@ const UserSignUpForm = ({ setUser, setToWelcome, setError, setLoading }) => {
               onChange={(event) => setPasswordConfirmation(event.target.value)}
             />
 
-            <button className="btn btn-green mt-3" type="submit">
+            <button className="btn btn-login mt-3" type="submit">
               Sign up for <span className="brand-style">WerdNerd</span>!
             </button>
           </div>
