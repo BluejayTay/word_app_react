@@ -127,7 +127,6 @@ const StyledGame = styled.div`
       font-size: 14px;
       margin-left: 4px;
     }
-
     .h2 {
       font-size: 18px;
     }
