@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledGame = styled.div`
   .brand-title {
     font-family: "Rampart One", sans-serif;
-    font-size: 48px;
+    font-size: 40px;
     margin: 0px;
     text-align: center;
   }
@@ -35,7 +35,7 @@ const StyledGame = styled.div`
   }
   .game-card {
     border: 1px solid #100804;
-    margin-top: 48px;
+    margin-top: 24px;
     margin-bottom: 4px;
   }
   .game-title {
@@ -71,7 +71,7 @@ const StyledGame = styled.div`
 
   @media screen and (max-width: 767px) {
     .brand-title {
-      font-size: 36px;
+      font-size: 34px;
     }
     .synonym {
       padding-left: 10px;
@@ -105,8 +105,6 @@ const StyledGame = styled.div`
     }
     .word-btn {
       font-size: 14px;
-      padding-left: 6px;
-      padding-right: 6px;
     }
   }
   @media screen and (max-width: 450px) {
@@ -134,15 +132,15 @@ const StyledGame = styled.div`
       font-size: 18px;
     }
   }
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 370px) {
     .brand-title {
       font-size: 24px;
     }
     .synonym {
-      padding-left: 5px;
+      padding-left: 0px;
     }
     .word {
-      padding-right: 5px;
+      padding-right: 0px;
     }
     .record-display,
     .timer-display,
