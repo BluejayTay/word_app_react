@@ -24,22 +24,27 @@ code {
 .btn-green { 
   background-color:#e4f967;
   font-weight: 500;
-  color:#d74101;
+  color:#100804;
 }
-
+.btn-login {
+  background-color: #8ae7f5;
+  color: #ff621f;
+  font-weight: 600;
+  text-decoration: none;
+}
 .brand-style {
   font-family: "Rampart One", sans-serif;
 }
 
 @media screen and (min-width: 500px) {
   .btn-green:hover {
-    color:#0c9bb1;
+    color:#ee680f;
     box-shadow: 4px 4px 5px 2px rgba(0, 184, 165, 0.4);
   } 
   
-  .btn-nav:hover{
+  .btn-login:hover{
     background-color: #ff621f;
     color: #8ae7f5;
-    box-shadow: 3px 3px 5px 2px rgba(0, 184, 165, 0.4);
+    box-shadow: 3px 3px 5px 2px rgba(0, 184, 166, 0.486);
   }
 }

@@ -4,7 +4,7 @@ import { API_ROOT } from "../apiRoot";
 import axios from "axios";
 import Nav from "./Nav";
 import Game from "./Game/Game";
-import Welcome from "./Home/Welcome";
+import Welcome from "./Welcome/Welcome";
 import StudyListForm from "./StudyLists/StudyListForm";
 import UserLogIn from "./User/UserLogIn";
 

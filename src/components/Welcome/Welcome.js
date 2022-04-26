@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage";
-import GameForm from "./GameForm";
-import Instructions from "./Instructions";
 import LoadingSpin from "react-loading-spin";
 import MWlogo from "../../MWlogo.png";
-import styled from "styled-components";
+import GameForm from "./GameForm";
 import GuestMessage from "./GuestMessage";
 import UserMessage from "./UserMessage";
+import Instructions from "./Instructions";
+import styled from "styled-components";
 
 const StyledWelcome = styled.div`
   .welcome-container {
     background-color: #e6fdff;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 48px;
     padding: 24px;
     justify-content: center;
@@ -68,7 +68,7 @@ const Welcome = ({ user }) => {
     const token = sessionStorage.getItem("auth_token");
     if (token) {
       return (
-        <div className="text-center my-4">
+        <div className="text-center mt-5 mb-1">
           <Link to={`/study_lists/new`} className="btn btn-green">
             Make a new list
           </Link>
@@ -76,7 +76,7 @@ const Welcome = ({ user }) => {
       );
     } else {
       return (
-        <div className="text-center my-4">
+        <div className="text-center mt-5 mb-1">
           <Link to={`/users/login`} className="btn btn-green">
             Sign-up/Log-in to make a new list!
           </Link>
